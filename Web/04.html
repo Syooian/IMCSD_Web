@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        var X = prompt("Input X!");
+        var Y = prompt("Input Y!");
+
+        //console.log("P1 : X="+X+", Y="+Y);
+        document.write("P1 : X=" + X + ", Y=" + Y + "<br>");
+
+        /* var temp = X;
+        X = Y;
+        Y = temp; */
+
+        X = (X - 0) + (Y - 0);
+        Y = X - Y;
+        X = X - Y;
+
+        //console.log("P2 : X="+X+", Y="+Y);
+        document.write("P2 : X=" + X + ", Y=" + Y + "<br>");
+
+        // var 是函式範疇，let 是區塊範疇。
+        if (true) {
+            var a = 10; // 在此區塊外仍可存取
+            let b = 20; // 在此區塊外無法存取
+        }
+
+        document.write("var a: " + a + "<br>"); // 可以正常運作
+        document.write("let b: " + b + "<br>"); // 錯誤：b 未定義
+
+        var IS = 5;
+        switch (IS) {
+            case 1:
+                document.write("1<br>");
+                break;
+            case 2:
+                document.write("2<br>");
+                break;
+            case 3:
+                document.write("3<br>");
+                break;
+            case 4:
+                document.write("4<br>");
+                break;
+            default:
+                document.write("default<br>");
+        }
+
+        try {
+
+        } catch (error) {
+            console.log(error);
+        } finally {
+            console.log("finally!");
+        }
+
+    </script>
+</body>
+
+</html>

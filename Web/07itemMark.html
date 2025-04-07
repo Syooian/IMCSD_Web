@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #container {
+            width: 500px;
+            position: relative;
+        }
+
+        #menu {
+            height: 50px;
+            top: 0;
+            left: 0;
+            position: absolute;
+            width: 200px;
+        }
+
+
+        #menu,
+        #menu ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        #menu li {
+            background-color: #477dff;
+        }
+
+        #menu a {
+            color: white;
+            text-decoration: none;
+            padding: 5px;
+            display: block;
+            width: 200px;
+        }
+
+        #menu li ul {
+            width: 200px;
+        }
+
+        #menu>li>ul>li {
+            background-color: white;
+        }
+
+        #menu>li>ul>li>a {
+            color: #0ae602;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="container">
+        <ul id="menu">
+            <li>
+                <a href="#">產品</a>
+                <ul class="submenu">
+                    <li><a href="#">ASP.net</a></li>
+                    <li><a href="#">jQuery</a></li>
+                    <li><a href="#">JavaScript</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">服務</a>
+                <ul class="submenu">
+                    <li><a href="#">線上客服</a></li>
+                    <li><a href="#">檔案下載</a></li>
+                    <li><a href="#">資料查詢</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">查詢</a>
+                <ul class="submenu">
+                    <li><a href="#">訂單查詢</a></li>
+                    <li><a href="#">歷史訂單</a></li>
+
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+        $('#menu li ul').hide();
+        $('#menu>li').click(function () {
+            $(this).find('ul').slideToggle(500);
+        });
+
+    </script>
+</body>
+</html>

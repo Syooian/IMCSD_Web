@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        //已知雞兔共35隻，雞兔的腳共94支，請問籠子裡雞兔各有幾隻?
+
+        //#region 
+        var End = false;
+
+        for (var i = 0; i <= 35; i++) {
+            for (var j = 0; j <= 35; j++) {
+                if (i + j == 35 && (i * 2 + j * 4) == 94) {
+                    document.write("雞有" + i + "隻，兔有" + j + "隻<br>");
+                    document.write("雞腳 : " + (i * 2) + ", 兔腳 : " + (j * 4));
+
+                    End = true;
+
+                    break;
+                }
+            }
+
+            if (End)
+                break;
+        }
+        //#endregion
+
+        document.write("<br>");
+
+        //#region 
+        for (var a = 0; a <= 35; a++) {
+            if (2 * a + 4 * (35 - a) == 94) {
+                document.write("雞有" + a + "隻，兔有" + (35 - a) + "隻<br>");
+                break;
+            }
+        }
+        //#endregion
+
+
+    </script>
+</body>
+
+</html>

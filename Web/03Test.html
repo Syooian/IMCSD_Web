@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Page</title>
+</head>
+
+<body>
+    <h1>Welcome to Test Page</h1>
+    <p>This is a sample HTML file.</p>
+
+    <script>
+
+        var X = 100, Y = 200;
+
+        // Display values before swapping
+        document.write("Before Swap: X=" + X + ", Y=" + Y + "<br>");
+
+        // Swap values without declaring a new variable
+        X = X + Y; //X=300, Y=200
+        Y = X - Y; //Y=100, X=300
+        X = X - Y; //X=200, Y=100
+
+        // Display values after swapping
+        document.write("After Swap: X=" + X + ", Y=" + Y + "<br>");
+
+
+
+    </script>
+</body>
+
+</html>
