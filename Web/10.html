@@ -31,12 +31,20 @@
         // }
         //------------------------------------------------------------
 
-        var Str = "";
-        for (var a = 0; a < Input; a++) {
-            Str += "*";
-            document.write(Str + "<br>");
+        // var Str = "";
+        // for (var a = 0; a < Input; a++) {
+        //     Str += "*";
+        //     document.write(Str + "<br>");
+        // }
+
+        //------------------------------------------------------------九九乘法表
+        for (var a = 1; a <= 9; a++) {
+            for (var b = 1; b <= 9; b++) {
+                document.write(a + " X " + b + " = " + (a * b) + "<br>");
+            }
         }
 
+        
 
     </script>
 </body>

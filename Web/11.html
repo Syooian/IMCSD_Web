@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // var Num = 1;
+
+        // do {
+        //     document.write("<h" + Num + ">AAAAAAAAA</h" + Num + ">");
+        //     Num++;
+        // }
+        // while (Num <= 6)
+
+        // var ColorStr = ["red", "silver", "blue", "green"];
+        // for (var a = 0; a < ColorStr.length; a++) {
+        //     //document.write("<h" + (a + 1) + " style='color:" + ColorStr[a] + "'>AAAAAAAAA</h" + (a + 1) + ">");
+        //     document.write(`<h${a + 1} style='color:${ColorStr[a]}'>AAAAAAAAA</h${a + 1}>`);
+        // }
+
+        //------------------------------------------------------------------1~1000的總和 (while)
+        var Total = 0;
+        var Num = 1;
+        while (Num <= 1000) {
+            Total += Num;
+            Num++;
+        }
+        document.write("1~1000的總和為" + Total + "<br>");
+
+        document.write("<hr>");
+
+        //------------------------------------------------------------------費氏數列 (while)
+        // 0, 1, 1, 2, 3, 5, 8, 13, 21, 34
+        //已知第一個數和第二個數為1
+        //第n為第n-1+第n-2
+        //請找出第n數為數列上的哪一個數字
+
+        var Input = prompt("請輸入第N個數字");
+
+        var Num1 = 0;
+        var Num2 = 1;
+        var Num3 = 0;
+        var Total = 0;
+
+        if (Input <= 1) {
+            Num3 = Input;
+        }
+        else {
+            var Num = 2;
+            while (Num <= Input) {
+                Num3 = Num1 + Num2;
+                Num1 = Num2;
+                Num2 = Num3;
+
+                Num++;
+            }
+        }
+
+        document.write(Num3);
+
+        document.write("<hr>");
+        //------------------------------------------------------------------費氏數列 (while)
+        //已知雞兔共35隻，雞兔的腳共94支，請問籠子裡雞兔各有幾隻?
+        var Chicken = 0;
+        while (2 * Chicken + 4 * (35 - Chicken) != 94) {
+            document.write("雞有" + Chicken + "隻，兔有" + (35 - Chicken) + "隻<br>");
+        }
+
+        Chicken++;
+
+
+    </script>
+</body>
+
+</html>
