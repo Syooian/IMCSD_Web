@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //迴圈(loop)敘述
+        //for 敘述
+        //用在知道要執行幾次
+
+        //  for ( 起始值; 結束值; 增量值 ){
+        //      要執執行的程式碼寫在這裡
+        //  }
+
+        document.write("<h1>Welcome my homepage!!</h1>")
+        document.write("<h2>Welcome my homepage!!</h2>")
+        document.write("<h3>Welcome my homepage!!</h3>")
+        document.write("<h4>Welcome my homepage!!</h4>")
+        document.write("<h5>Welcome my homepage!!</h5>")
+        document.write("<h6>Welcome my homepage!!</h6>")
+
+
+        //我要讓某一段程式執行10次
+        for (var i = 1; i <= 10; i++) {
+
+            document.write("<h1>Welcome my homepage!!</h1>");
+        }
+
+        document.write("<hr>");
+        //用迴圈的寫法跑出一組h1~h6
+        for (var i = 1; i <= 6; i++) {
+
+            document.write("<h" + i + ">Welcome my homepage!!</h" + i + ">");
+        }
+
+
+        document.write("<hr>");
+
+
+        //迴圈的寫法跑出100組h1~h6
+        //巢狀迴圈
+        for (var j = 1; j <= 100; j++) {
+
+            for (var i = 1; i <= 6; i++) {
+
+                document.write("j=" + j + ", i=" + i);
+                document.write("<h" + i + ">Welcome my homepage!!</h" + i + ">");
+
+            }
+        }
+
+        //第1次: j=1, i=1
+        //第2次: j=1, i=2
+        //第3次: j=1, i=3
+        //第4次: j=1, i=4
+        //第5次: j=1, i=5
+        //第6次: j=1, i=6
+        //第7次: j=2, i=1
+        //第8次: j=2, i=2
+        //第9次: j=2, i=3
+        //第10次: j=2, i=4
+        //第11次: j=2, i=5
+        //第12次: j=2, i=6
+        //第13次: j=3, i=1
+
+        //第599次: j=100, i=5
+        //第600次: j=100, i=6
+        //j的最終值101, i的最終值7
+
+        document.write("<hr>");
+
+
+
+
+        //用迴圈計算1到1000的總和
+        //1+2+3+4+5
+        var sum = 0;
+        for (var i = 1; i <= 1000; i++) {
+            sum = sum + i;
+        }
+        document.write("1到1000的總和：" + sum);
+        //sum=0, i=1 , sum+i= 0+1 = 1
+        //sum=1, i=2 , sum+i= 1+2 = 3
+        //sum=3, i=3 , sum+i= 1+2+3 = 6
+        //sum=6, i=4 , sum+i= 1+2+3+4 = 10
+        //sum=10, i=5 ,sum+i= 1+2+3+4+5 =15
+        //sum=15, i=6 ,sum+i= 1+2+3+4+5+6 = 21
+        document.write("<hr>");
+
+
+        //用迴圈計算1到1000的奇數總和
+        //1+3+5+7+9+11+......+995+997+999
+        //寫法一:把偶數排除掉
+        var sum = 0;
+        for (var i = 1; i <= 1000; i++) {
+            if (i % 2 != 0)
+                sum = sum + i;
+        }
+        document.write("1到1000的奇數總和：" + sum);
+
+        document.write("<hr>");
+        
+        //寫法二:利用計數器累加值
+        var sum = 0;
+        for (var i = 1; i <= 1000; i += 2) {
+            sum = sum + i;
+        }
+        document.write("1到1000的奇數總和：" + sum);
+
+    </script>
+</body>
+
+</html>

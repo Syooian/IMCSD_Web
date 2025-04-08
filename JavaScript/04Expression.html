@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <script>
+    
+        //運算敘述句
+
+        var a = 10; //指定運算, a=10
+
+        a = 20; //指定運算, a=20
+
+        a = a + 10; //加法指定運算, a=30
+        a += 10; //加法指定運算, 動作相當於a=a+10 ,a=40
+        a -= 10; //減法指定運算, 動作相當於a=a-10 ,a=30
+        a *= 10; //乘法指定運算, 動作相當於a=a*10 ,a=300
+        a /= 10; //除法指定運算, 動作相當於a=a/10 ,a=30
+        a %= 4;  //除法取餘數指定運算, 動作相當於a=a%4 ,a=2
+
+        //以下四種寫法都是累加1的意思
+        a = a + 1;
+        a += 1;
+        a++;
+        ++a;
+        //目前a=6
+
+        document.write("a=" + a);
+
+        document.write("<hr>");
+        ////////////////////////////////////////////////////
+        //兩數交換
+        //請宣告兩變數分別為x與y，請給ｘ，ｙ任意的數值,程式內容請把ｘ與ｙ的值對調
+        //但不可以再宣告任何新的變數, 並輸入對調後的結果
+
+        var x = 394735, y = 1334840;
+
+        x = x + y;
+        y = x - y;
+        x = x - y;
+
+        document.write("x=" + x + ", y=" + y);
+
+        document.write("<hr>");
+        ///////////////////////////////
+        //不同資料型態在算術運算的結果
+        //1. *  /  %
+        //2. +  -
+
+        document.write(3 + 2);
+        document.write("<br>");
+        document.write("3" + "2");
+        document.write("<br>");
+        document.write("3" + 2);
+        document.write("<br>");
+        document.write(3 + "2");
+        document.write("<br>");
+        document.write("3" - 2);
+        document.write("<br>");
+        document.write("3" * 2);
+        document.write("<br>");
+        document.write("3" / 2);
+
+        document.write("<br>");
+        document.write("a" - 2);
+        document.write("<br>");
+        document.write("3a" - 2);
+        document.write("<br>");
+        document.write("a3" - 2);
+        document.write("<br>");
+
+
+        var m = "10";
+        document.write(m + 2);
+        document.write("<br>");
+        document.write(m - 0 + 2);
+        document.write("<hr>");
+
+
+        
+
+        /* var n = prompt("請輸入一個整數數值");
+        document.write(n-0 + 10);
+        document.write("<hr>");  */
+
+        ////////////////////////////////////////////////////
+        //兩數交換
+        //請宣告兩變數分別為x與y，請給ｘ，ｙ任意的數值,程式內容請把ｘ與ｙ的值對調
+        //但不可以再宣告任何新的變數, 並輸入對調後的結果
+
+        /*  var x = prompt("請輸入x值"), y = prompt("請輸入y值");
+ 
+         x = (x - 0) + (y - 0); 
+         y = x - y;
+         x = x - y;
+ 
+         document.write("x=" + x + ", y=" + y);
+ 
+         document.write("<hr>"); */
+        /////////////////////////////////////////////////////
+
+        //使用 parseInt()來做資料型態轉換
+        //Integer整數型態
+
+        document.write(parseInt(m) + 2);
+        document.write("<br>");
+
+        var r = 5 / 2;
+        document.write("r=" + r);
+        document.write("<br>");
+        r = parseInt(r);
+        document.write("r=" + r);
+        document.write("<br>");
+
+        document.write(parseInt("abcdd"));
+        document.write("<br>");
+        document.write(parseInt("abcdd111111"));
+        document.write("<br>");
+        document.write(parseInt("1223333abcdd"));
+        document.write("<br>");
+        document.write(parseInt("1223333abc43334dddsf343433dfdfd"));
+        document.write("<hr>");
+
+
+        z=123;
+        document.write("z="+z);
+        document.write("<hr>");
+        
+        var s;
+        document.write("s="+s);
+        document.write("<hr>");
+
+
+        ////////////////////////
+        document.write("k="+k); //這行會報錯,必須使用開發人員工具進入Console檢視錯誤訊息
+      
+      
+
+    </script>
+</body>
+
+</html>

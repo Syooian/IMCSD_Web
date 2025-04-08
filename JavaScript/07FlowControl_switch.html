@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        //1.信用卡付款 2.現金付款 3.轉帳付款 4.Line Pay 5.貨到付款
+        //搜尋式
+
+        var payType = 4
+
+        switch (payType) {
+            case 1:
+                document.write("信用卡付款");
+                break;
+            case 2:
+                document.write("現金付款");
+                break;
+            case 3:
+                document.write("轉帳付款");
+                break;
+            case 4:
+                document.write("Line Pay");
+                break;
+            case 5:
+                document.write("貨到付款");
+                break;
+            default:
+                document.write("請輸入1~5的整數");
+
+        }
+        document.write("<hr>");
+        //a.信用卡付款 b.現金付款 c.轉帳付款 d.Line Pay e.貨到付款
+
+        var payT = "c"
+
+        switch (payT) {
+            case "a":
+                document.write("信用卡付款");
+                break;
+            case "b":
+                document.write("現金付款");
+                break;
+            case "c":
+                document.write("轉帳付款");
+                break;
+            case "d":
+                document.write("Line Pay");
+                break;
+            case "e":
+                document.write("貨到付款");
+                break;
+            default:
+                document.write("請輸入a~e的字母");
+
+        }
+        document.write("<hr>");
+        ////////////////////////////////////////////////////////////
+        ///////////////////////
+        //區分等第(只能用switch敘述)
+        //90分以上為優等, 80~89分為甲等, 70~79分為乙等
+        //60~69分為丙等, 60分以下為丁等
+
+        var r = 85;
+
+        r = parseInt(r / 10);
+
+        switch (r) {
+            case 10:
+            case 9:
+                document.write("優等");
+                break;
+            case 8:
+                document.write("甲等");
+                break;
+            case 7:
+                document.write("乙等");
+                break;
+            case 6:
+                document.write("丙等");
+                break;
+            default:
+                document.write("丁等");
+                break;
+        }
+
+
+
+
+
+    </script>
+</body>
+
+</html>

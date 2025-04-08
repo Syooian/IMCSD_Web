@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /*
+            if 敘述句...(二擇一敘述)
+            
+            語法:
+            
+            if(條件){
+                條件成立時要執行的程式
+                要執行的程式可以不只一行
+            }
+            else{
+                條件不成立時要執行的程式
+                要執行的程式可以不只一行
+            }
+            
+        */
+
+        var s = 60;
+
+        if (s < 60) {
+            document.write("s的值小於60");
+        }
+        else {
+            document.write("s的值沒有小於60");
+
+        }
+        document.write("<hr>");
+        ////////////////////////////////////////
+        //1.信用卡付款 2.現金付款 3.轉帳付款 4.Line Pay 5.貨到付款
+        //搜尋式
+
+        var payType = prompt("請選擇付款方式:1.信用卡付款 2.現金付款 3.轉帳付款 4.Line Pay 5.貨到付款");
+
+        if (payType == 1) {
+            document.write("信用卡付款")
+        }
+        else if (payType == 2) {
+            document.write("現金付款")
+        }
+        else if (payType == 3) {
+            document.write("轉帳付款")
+        }
+        else if (payType == 4) {
+            document.write("Line Pay")
+        }
+        else if (payType == 5) {
+            document.write("貨到付款")
+        }
+        else {
+            document.write("請輸入1~5的數字")
+        }
+
+
+        document.write("<hr>");
+        ///////////////////////
+        //區分等第
+        //90分以上為優等, 80~89分為甲等, 70~79分為乙等
+        //60~69分為丙等, 60分以下為丁等
+        var r = 96;
+
+
+        //獨立的if
+        /*  if (r >= 90 && r <= 100)
+             document.write("優等");
+         if (r >= 80 && r <= 89)
+             document.write("甲等");
+         if (r >= 70 && r <= 79)
+             document.write("乙等");
+         if (r >= 60 && r <= 69)
+             document.write("丙等");
+         if (r >= 0 && r <= 59)
+             document.write("丁等"); */
+
+
+        //搜尋式if
+      /*   if (r >= 90 && r <= 100)
+            document.write("優等");
+        else if (r >= 80 && r <= 89)
+            document.write("甲等");
+        else if (r >= 70 && r <= 79)
+            document.write("乙等");
+        else if (r >= 60 && r <= 69)
+            document.write("丙等");
+        else if (r >= 0 && r <= 59)
+            document.write("丁等");
+ */
+
+
+        //優化搜尋式if
+        if (r >= 90 && r<=100)
+            document.write("優等");
+        else if (r >= 80)
+            document.write("甲等");
+        else if (r >= 70)
+            document.write("乙等");
+        else if (r >= 60)
+            document.write("丙等");
+        else if(r>=0)
+            document.write("丁等");
+
+    </script>
+</body>
+
+</html>

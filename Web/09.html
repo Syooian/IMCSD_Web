@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //費氏數列
+        // 0, 1, 1, 2, 3, 5, 8, 13, 21, 34
+        //已知第一個數和第二個數為1
+        //第n為第n-1+第n-2
+        //請找出第n數為數列上的哪一個數字
+
+        var Input = prompt("請輸入第N個數字");
+
+        var Num1 = 0;
+        var Num2 = 1;
+        var Num3 = 0;
+        var Total = 0;
+
+        if (Input <= 1) {
+            Num3 = Input;
+        }
+        else {
+            for (var a = 2; a <= Input; a++) {
+                Num3 = Num1 + Num2;
+                Num1 = Num2;
+                Num2 = Num3;
+
+                console.log("a : " + a + ", Num1 : " + Num1 + ", Num2 : " + Num2);
+            }
+        }
+
+        document.write(Num3);
+
+
+    </script>
+</body>
+
+</html>
