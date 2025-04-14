@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <input type="button" value="取得所有學生成績等第列表" onclick="getStudentsLevelList()">
+    <input type="button" value="歡迎光臨本站" onclick="Welcome()">
+    <input type="button" value="查詢某位學生成績等第" onclick="inputIndex()">
+
+    <input type="button" value="取得所有部門資料列表" onclick="getDeptmentsList()">
+    <input type="button" value="取得所有部門資料列表2" id="btnGetDept">
+
+    <hr>
+    <div id="result">
+
+    </div>
+
+    <script>
+        //結構化程式設計
+        //講解重點:將各功能函數化
+        //呼叫函數時，會執行該函數內的程式碼
+        //呼叫=調用
+
+
+        //主程式
+
+        //Welcome();  //呼叫功能2
+        //getStudentLevel(); //呼叫功能1
+
+        /////////////////////////////////////////////////////////////////////////////
+
+        //資料區
+        //學生資料
+        var arrStudentNo = ["S001", "S002", "S003", "S004", "S005", "S006", "S007", "S008", "S009", "S010"];
+        var arrStudentName = ["王小明", "王大明", "王中明", "王右明", "王左明", "王上明", "王下明", "張三", "李四", "王五"];
+
+        //成績
+        var arrStudentScore = [92, 87, 56, 68, 85, 83, 77, 71, 85, 93];
+        //等第
+        var arrLevel = ["丁等", "丁等", "丁等", "丁等", "丁等", "丁等", "丙等", "乙等", "甲等", "優等", "優等"];
+
+        //部門資料
+        var arrDeptCode = ["01", "02", "03", "04", "05"];
+        var arrDeptName = ["資訊部", "管理部", "行銷部", "企劃部", "人事處"];
+
+
+        var result = document.getElementById("result");
+       
+
+
+
+        //功能2:歡迎光臨本站
+        function Welcome() {
+            var strUserName = prompt("請輸入您的大名:");
+
+            //document.write(`<h1>歡迎光臨${strUserName}蒞臨本站!!</h1>`);
+
+            result.innerHTML = `<h1>歡迎光臨${strUserName}蒞臨本站!!</h1>`;
+
+        }
+
+
+        //功能1:取得所有學生成績等第列表
+        function getStudentsLevelList() {
+            result.innerHTML ="";
+            for (var i = 0; i < arrStudentNo.length; i++) {
+                getResult(i);//呼叫功能5
+            }
+        }
+
+
+        //功能3:查詢某位學生成績等第
+        //有參數的函數
+        function getStudentLevel(index) {
+            index--;
+            getResult(index);//呼叫功能5
+
+        }
+
+        //功能5:取得學生成績資料
+        function getResult(i) {
+            var index = 0;
+            index = parseInt(arrStudentScore[i] / 10);
+            //document.write(`${arrStudentNo[i]}-${arrStudentName[i]}-${arrLevel[index]}<br>`);
+
+            result.innerHTML += `${arrStudentNo[i]}-${arrStudentName[i]}-${arrLevel[index]}<br>`;
+        }
+
+
+        //功能4:輸入要查詢的學生
+        function inputIndex() {
+            var index = prompt("請輸入要查詢的學生序號(1~10):");
+            result.innerHTML ="";
+            getStudentLevel(index);//呼叫功能3
+        }
+
+        /* document.write("<hr>"); */
+        ////////////////////////////////////////////////////////////////////////////////////
+        //情境
+        /*
+                部門代碼	部門名稱
+                   01	    資訊部
+                   02	    管理部
+                   03	    行銷部
+                   04	    企劃部
+                   05	    人事處
+       */
+
+
+        //DOM(document object model)操作的寫法
+        var btnGetDept = document.getElementById("btnGetDept");  //用元素的id取得指定物件
+        //console.log(btnGetDept);
+        //取得所有部門資料列表2按鈕在用的
+        btnGetDept.addEventListener("click", getDeptmentsList);
+
+
+        //功能5:取得所有部門資料列表
+        function getDeptmentsList() {
+            result.innerHTML ="";
+            for (var i = 0; i < arrDeptCode.length; i++) {
+                //document.write(`${arrDeptCode[i]}-${arrDeptName[i]}<br>`);
+                result.innerHTML += `${arrDeptCode[i]}-${arrDeptName[i]}<br>`;
+            }
+        }
+
+
+    </script>
+</body>
+
+</html>

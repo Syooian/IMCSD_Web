@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="button" value="取得部門資料" , onclick="ShowDepartment()">
+
+    <hr id="separator"><!--分隔線-->
+
+    <script>
+        var Department = [
+            { ID: 1, Name: "人事部" },
+            { ID: 2, Name: "業務部" },
+            { ID: 3, Name: "會計部" },
+            { ID: 4, Name: "總務部" }
+        ];
+
+        // var Button1 = document.querySelectorAll("input[type=button]")[0];
+        // Button1.addEventListener("click", ShowDepartment());
+
+        //document.write("<hr>");
+
+        function ShowDepartment() {
+
+            //要在按下按鈕後將資料顯示在 <hr> 之下，可以使用 DOM 操作來動態新增內容，而不是直接使用 document.write。
+
+            // 找到 <hr> 元素
+            var separator = document.getElementById("separator");
+
+            // 動態新增內容
+            for (var a = 0; a < Department.length; a++) {
+                var div = document.createElement("div");
+                div.textContent = "ID : " + Department[a].ID + ", 部門 : " + Department[a].Name;
+                separator.parentNode.insertBefore(div, separator.nextSibling);
+            }
+
+            /*
+                使用 document.getElementById 找到 <hr> 元素：
+
+                使用 <hr> 的 id 屬性來定位它。
+                使用 document.createElement 動態新增元素：
+
+                每次迴圈建立一個新的 <div> 元素，並將部門資料填入。
+                使用 insertBefore 將新內容插入到 <hr> 之後：
+
+                將新建立的 <div> 插入到 <hr> 的下一個節點。
+            */
+        }
+
+
+    </script>
+</body>
+
+</html>

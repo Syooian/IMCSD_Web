@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <h1 id="myTimer"></h1>
+
+
+    <script>
+        //實例-小時鐘
+        //講解重點:物件的建構
+
+
+        function getMyTime() {
+            var timer = new Date();
+
+            var myTimer = document.getElementById("myTimer");
+            //myTimer.innerHTML = timer;
+
+            myTimer.innerHTML = timer.getHours() + ":" + timer.getMinutes() + ":" + timer.getSeconds()+":"+timer.getMilliseconds();
+        }
+
+        setInterval(  getMyTime   , 1 );
+
+    </script>
+</body>
+
+</html>
