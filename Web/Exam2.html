@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //1. 久久乘法表
+        for (var a = 1; a <= 9; a++) {
+            for (var b = 2; b <= 9; b++) {
+                document.write(b + "x" + a + "=" + (b * a) + "	");
+            }
+            document.write("<br>");
+        }
+
+        document.write("<hr>");
+        //2. 等第區分(限定用switch)
+        //請寫一個程式，宣告一個整數變數擺放成績，並以程式判斷等第，90分以上為優等，80~89分為甲等，70~79分為乙等，60~69分為丙等，60分以下為丁等。
+        var Score = 95;
+        switch (parseInt(Score / 10)) {
+            case 10:
+            case 9:
+                document.write("該生成績為" + Score + "，等第為優等<br>");
+                break;
+            case 8:
+                document.write("該生成績為" + Score + "，等第為甲等<br>");
+                break;
+            case 7:
+                document.write("該生成績為" + Score + "，等第為乙等<br>");
+                break;
+            case 6:
+                document.write("該生成績為" + Score + "，等第為丙等<br>");
+                break;
+            default:
+                document.write("該生成績為" + Score + "，等第為丁等<br>");
+        }
+
+        document.write("<hr>");
+        //3. 兩數交換
+        //宣告變數ｘ與ｙ為任意整數，並寫一段程式，使其執行完後能將兩變數的值交換，且過程中不可以再宣告新的變數。
+        var X = 100, Y = 200;
+        document.write("交換前X=" + X + " Y=" + Y + "<br>");
+        X = X + Y; // X=300
+        Y = X - Y; // Y=100
+        X = X - Y; // X=200
+        document.write("交換後X=" + X + " Y=" + Y + "<br>");
+
+        document.write("<hr>");
+        //4. 雞兔同籠
+        //請寫一段程式解出下列問題：已知雞兔共35隻，雞兔的腳共94支，請問籠子裡雞兔各有幾隻？
+        var Chicken = 0;
+        while (2 * Chicken + 4 * (35 - Chicken) != 94) {
+            Chicken++;
+        }
+        document.write("雞有" + Chicken + "隻，兔有" + (35 - Chicken) + "隻<br>");
+
+        document.write("<hr>");
+        //5. 費氏數列
+        //已知第一個數和第二個數為1，第n為第n-1+第n-2，請撰寫一段程式使其能找出第n數為數列上的哪一個數字。
+        var Input = 10;
+
+        // 初始化費氏數列的前兩個數
+        var Num1 = 1, Num2 = 1, Num3 = 0;
+
+        if (Input == 1 || Input == 2) {
+            // 如果 n 是 1 或 2，直接輸出 1
+            Num3 = 1;
+        } else {
+            for (var i = 3; i <= Input; i++) {
+                Num3 = Num1 + Num2;
+                Num1 = Num2;
+                Num2 = Num3;
+            }
+        }
+
+        document.write("第 " + Input + " 個費氏數列中的數字為：" + Num3);
+
+
+    </script>
+</body>
+
+</html>

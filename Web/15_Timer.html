@@ -12,22 +12,25 @@
         <div id="TimerText">ASD</div>
     </h1>
 
+    <img src="Falken-Tyre-Logo.png" alt="飛準" >
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRdam6HUarIKBMWm42E2ERs9UyB_9dLQSMT4A&s">
+
     <script>
 
-            // var date = new Date(); // 取得當前時間
+        // var date = new Date(); // 取得當前時間
 
-            //       // 更新網頁上的時間顯示
-            //     document.getElementById("TimerText").innerHTML = 
-            //         date.getFullYear() + "-" + 
-            //         String(date.getMonth() + 1).padStart(2, '0') + "-" + 
-            //         String(date.getDate()).padStart(2, '0') + " " + 
-            //         String(date.getHours()).padStart(2, '0') + ":" + 
-            //         String(date.getMinutes()).padStart(2, '0') + ":" + 
-            //         String(date.getSeconds()).padStart(2, '0');
+        //       // 更新網頁上的時間顯示
+        //     document.getElementById("TimerText").innerHTML = 
+        //         date.getFullYear() + "-" + 
+        //         String(date.getMonth() + 1).padStart(2, '0') + "-" + 
+        //         String(date.getDate()).padStart(2, '0') + " " + 
+        //         String(date.getHours()).padStart(2, '0') + ":" + 
+        //         String(date.getMinutes()).padStart(2, '0') + ":" + 
+        //         String(date.getSeconds()).padStart(2, '0');
 
-            // 每秒更新一次
-            setInterval(function() {
-                var date = new Date(); // 取得當前時間
+        // 每秒更新一次
+        setInterval(function () {
+            var date = new Date(); // 取得當前時間
             // var hours = date.getHours(); // 獲取小時
             // var minutes = date.getMinutes(); // 獲取分鐘
             // var seconds = date.getSeconds(); // 獲取秒數
@@ -36,15 +39,15 @@
             //var timeString = hours + ":" + minutes + ":" + seconds;
 
             // 更新網頁上的時間顯示
-            document.getElementById("TimerText").innerHTML = 
-                date.getFullYear()+"-"+
+            document.getElementById("TimerText").innerHTML =
+                date.getFullYear() + "-" +
                 String(date.getMonth()).padStart(2, '0') + "-" +
                 String(date.getDate()).padStart(2, '0') + " " +
                 String(date.getHours()).padStart(2, '0') + ":" +
                 String(date.getMinutes()).padStart(2, '0') + ":" +
-                String(date.getSeconds()) .padStart(2,'0');
+                String(date.getSeconds()).padStart(2, '0');
 
-             }, 1000); // 這行會導致無限迴圈，因為它會在每次迴圈中立即執行
+        }, 1000); // 這行會導致無限迴圈，因為它會在每次迴圈中立即執行
 
         // while (true) {
         //     var date = new Date(); // 取得當前時間
@@ -58,8 +61,12 @@
         //     // 更新網頁上的時間顯示
         //     document.getElementById("TimerText").innerHTML = timeString;
 
-        
+
         // }
+
+        function GetStr(Hours) {
+            return String(Hours).padStart(2, '0');
+        }
 
 
     </script>

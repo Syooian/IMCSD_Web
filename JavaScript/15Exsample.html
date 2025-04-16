@@ -11,6 +11,19 @@
 
     <h1 id="myTimer"></h1>
 
+    <input type="button" value="測試" onclick="test()">
+    <hr>
+
+    <input type="text" oninput="getMyNameValue()">
+
+    <div id="result"></div>
+
+    x:<input type="text" id="txtX"> y:<input type="text" id="txtY">
+    <hr>
+    <input type="button" value="顯示新聞" onclick="showNews()">
+    <div id="newsArea">
+
+    </div>
 
     <script>
         //實例-小時鐘
@@ -23,10 +36,262 @@
             var myTimer = document.getElementById("myTimer");
             //myTimer.innerHTML = timer;
 
-            myTimer.innerHTML = timer.getHours() + ":" + timer.getMinutes() + ":" + timer.getSeconds()+":"+timer.getMilliseconds();
+            //時間格式化
+            //2. 節省語法的寫法
+            /*      var h = timer.getHours() < 10 ? "0" + timer.getHours() : timer.getHours();
+                 var m = timer.getMinutes() < 10 ? "0" + timer.getMinutes() : timer.getMinutes();
+                 var s = timer.getSeconds() < 10 ? "0" + timer.getSeconds() : timer.getSeconds(); */
+
+            //時間格式化
+            //1. 初步的寫法
+            /*  if (timer.getHours() < 10) {
+                 h = "0" + timer.getHours();
+             }
+             else {
+                 h = timer.getHours();
+             }
+ 
+             if (timer.getMinutes() < 10) {
+                 m = "0" + timer.getMinutes();
+             }
+             else {
+                 m = timer.getMinutes();
+             }
+ 
+             if (timer.getSeconds() < 10) {
+                 s = "0" + timer.getSeconds();
+             }
+             else {
+                 s = timer.getSeconds();
+             } */
+
+            //myTimer.innerHTML = timer.getHours() + ":" + timer.getMinutes() + ":" + timer.getSeconds();//+":"+timer.getMilliseconds();
+
+
+            //var result = getTimeFormat(timer);
+
+            myTimer.innerHTML = getTimeFormat(timer);
         }
 
-        setInterval(  getMyTime   , 1 );
+        setInterval(getMyTime, 1000);
+
+
+        //時間格式化
+        //3. 獨立成函數
+        function getTimeFormat(t) {
+            var h = t.getHours();
+            var m = t.getMinutes();
+            var s = t.getSeconds();
+
+            h = h < 10 ? "0" + h : h;
+            m = m < 10 ? "0" + m : m;
+            s = s < 10 ? "0" + s : s;
+
+            return h + ":" + m + ":" + s;
+        }
+
+
+        /////////////////////////////////////////////////////////////////////////////
+        //實例-簡易輸入
+        //講解重點:事件(Event)傳遞
+
+        function test() {
+            console.log("測試成功!!");
+            console.log(event);
+
+        }
+        // test();
+        var result = document.getElementById("result");
+        function getMyNameValue() {
+
+            //console.log(myName.value);
+
+            console.log(event.target.value);
+
+            result.innerHTML = event.target.value;
+
+        }
+
+        //////////////////////////////////////
+        //實例-滑鼠座標
+        //講解重點:事件(Event)傳遞
+        var txtX = document.getElementById("txtX");
+        var txtY = document.getElementById("txtY");
+
+
+        function getXY() {
+            console.log(event.pageX);
+            console.log(event.pageY);
+
+            txtX.value = event.pageX;
+            txtY.value = event.pageY;
+
+        }
+
+        document.addEventListener('mousemove', getXY);
+
+
+        //////////////////////////////////////
+        //實例-打字機效果
+        //講解重點:字串操作及時間延遲
+
+        var str = `貴婦奈奈與黃博健合開「杏立博全」醫美診所於民國107年間無預警歇業，積欠廠商款項，疑涉惡性倒閉。
+                    事發後，貴婦奈奈、黃博健與掛名診所院長的黃立雄，去向不明，遭民眾提告詐欺，因遲未到案，遭台北地檢署通緝。法務部調查局掌握貴婦奈奈、黃博健、黃立雄潛逃到加拿大多倫多，108年間，將三人列入外逃通緝犯名單。
+                    《鏡週刊》今天報導指出，貴婦奈奈主動聯繫台北地檢署與調查局，表明將在下個月從加拿大返國投案，讓檢調啟動後續遣返作業，並寫信向台北地檢署檢察長與調查局長，細說遭控吸金詐欺的始末。
+                    報導另指出，貴婦奈奈強調她沒有參與黃博健家族經營的杏立博全診所，也未涉及不法，希望回台協助檢調查明案情，讓真相大白。
+                    台北地檢署透過訊息表示，有關媒體報導內容，目前無法證實，全力查緝潛逃境外的被告到案。
+                    另一方面，黃立雄、黃林麗真夫妻因未獲繼續居留，去年主動聯繫台灣調查局人員，並稱在加拿大遭到黑道追債、恐嚇，願意返台說明案情。黃立雄夫妻於去年5月間押解返台，並分別解送台北、士林地檢署歸案。檢察官訊後，諭令黃林麗真無保請回；黃立雄新台幣50萬元交保，並實施科技監控。
+                    黃林麗真所涉及詐欺案，士檢檢察官認定罪嫌不足，予以不起訴處分；黃立雄所涉吸金案，目前仍由北檢持續偵辦中。`
+
+        var newsArea = document.getElementById("newsArea");
+
+
+        var i = 0;
+
+        function showNews() {
+            newsArea.innerHTML += str.substr(i, 1);
+            i++;  
+            if (i < str.length) {
+                setTimeout(showNews, 10);
+            }
+        }
+
+
+        //1.河內塔演算法
+
+        function hanoi(n, from, to, aux) {
+            if (n === 1) {
+            console.log(`Move disk 1 from ${from} to ${to}`);
+            return;
+            }
+            hanoi(n - 1, from, aux, to);
+            console.log(`Move disk ${n} from ${from} to ${to}`);
+            hanoi(n - 1, aux, to, from);
+        }
+
+        // Example usage:
+        hanoi(100, 'A', 'C', 'B'); // Move 3 disks from A to C using B as auxiliary
+
+        //2.八皇后問題
+        function solveNQueens(n) {
+            const solutions = [];
+            const board = Array.from({ length: n }, () => Array(n).fill('.'));
+
+            function isSafe(row, col) {
+                for (let i = 0; i < row; i++) {
+                    if (board[i][col] === 'Q') return false;
+                }
+                for (let i = row - 1, j = col - 1; i >= 0 && j >= 0; i--, j--) {
+                    if (board[i][j] === 'Q') return false;
+                }
+                for (let i = row - 1, j = col + 1; i >= 0 && j < n; i--, j++) {
+                    if (board[i][j] === 'Q') return false;
+                }
+                return true;
+            }
+
+            function backtrack(row) {
+                if (row === n) {
+                    solutions.push(board.map(row => row.join('')));
+                    return;
+                }
+                for (let col = 0; col < n; col++) {
+                    if (isSafe(row, col)) {
+                        board[row][col] = 'Q';
+                        backtrack(row + 1);
+                        board[row][col] = '.';
+                    }
+                }
+            }
+
+            backtrack(0);
+            return solutions;
+        }
+
+        // Example usage:
+        const n = 8;
+        const solutions = solveNQueens(n);
+        console.log(`Number of solutions for ${n}-Queens:`, solutions.length);
+        console.log(solutions);
+
+        //3.老鼠走迷宮
+        function solveMaze(maze, start, end) {
+            const directions = [
+            [0, 1],  // right
+            [1, 0],  // down
+            [0, -1], // left
+            [-1, 0]  // up
+            ];
+            const rows = maze.length;
+            const cols = maze[0].length;
+            const path = [];
+            const visited = Array.from({ length: rows }, () => Array(cols).fill(false));
+
+            function isSafe(x, y) {
+            return x >= 0 && x < rows && y >= 0 && y < cols && maze[x][y] === 0 && !visited[x][y];
+            }
+
+            function backtrack(x, y) {
+            if (x === end[0] && y === end[1]) {
+                path.push([x, y]);
+                return true;
+            }
+
+            visited[x][y] = true;
+            path.push([x, y]);
+
+            for (const [dx, dy] of directions) {
+                const newX = x + dx;
+                const newY = y + dy;
+
+                if (isSafe(newX, newY)) {
+                if (backtrack(newX, newY)) {
+                    return true;
+                }
+                }
+            }
+
+            path.pop();
+            return false;
+            }
+
+            if (backtrack(start[0], start[1])) {
+            return path;
+            } else {
+            return "No solution found";
+            }
+        }
+
+        // Example usage:
+        const maze = [
+            [0, 1, 0, 0, 0],
+            [0, 1, 0, 1, 0],
+            [0, 0, 0, 1, 0],
+            [0, 1, 1, 1, 0],
+            [0, 0, 0, 0, 0]
+        ];
+        const start = [0, 0];
+        const end = [4, 4];
+        const solution = solveMaze(maze, start, end);
+        console.log("Maze solution path:", solution);
+        
+
+
+        // Function to calculate the greatest common divisor (GCD) using a loop
+        function findGCD(a, b) {
+            while (b !== 0) {
+                let temp = b;
+                b = a % b;
+                a = temp;
+            }
+            return a;
+        }
+
+        // Example usage
+        const num1 = 12;
+        const num2 = 18;
+        const gcd = findGCD(num1, num2);
+        console.log(`${num1}及${num2}之最大公因數為${gcd}`);
 
     </script>
 </body>

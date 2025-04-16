@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <input type="button" id="NameButton1" value="測試" onclick=ButtonClick()>
+    <input type="Text" id="NameInput1" value="請輸入姓名">
+
+    <script>
+
+        var NameInput1 = document.getElementById("NameInput1");
+
+        function ButtonClick() {
+            console.log(NameInput1.value);
+            //console.log(event.target.value); // 取得按鈕的值
+
+            
+
+        }
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <h1 style="color:red;background-color: yellow;">Welcome My homepage!!</h1>
+
+    <script>
+        //迴圈(loop)敘述
+        //while 敘述
+        //通常用在不知道要執行幾次
+
+
+        /*
+        while( 條件  ){
+             條件成立要執行的程式內容
+         } 
+         */
+
+
+        var a = 0;
+
+        while (a <= 5) {
+
+            document.write("這個迴圈被執行了" + (a + 1) + "次<br>");
+            a++; // Increment a to avoid infinite loop
+
+        }
+
+        document.write("<hr>")
+        //用迴圈的寫法跑出一組h1~h6
+        /*  for (var i = 1; i <= 6; i++) {
+ 
+             document.write("<h" + i + ">Welcome my homepage!!</h" + i + ">");
+         } */
+        //請改寫成while迴圈
+
+        var i = 1;
+        while (i <= 6) {
+
+            document.write("<h" + i + ">Welcome my homepage!!</h" + i + ">");
+            i++
+        }
+
+        document.write("<hr>")
+
+        var j = 1;
+        var color = prompt("請輸顏色:");
+        /*  while (j <= 6) {
+ 
+             document.write("<h" + j + " style='color:" + color + ";background-color: yellow;'>Welcome my homepage!!</h" + j + ">");
+             j++
+         }
+  */
+        //ES6的寫法
+
+        while (j <= 6) {
+            document.write(`<h${j} style="color:${color};background-color: yellow;">Welcome My homepage!!</h${j}>`);
+            j++;
+        }
+
+        document.write("<hr>");
+
+        //計算1加到1000的總和
+        //1+2+3+4+5+6+7+8+9+10+11+......+995+996+997+998+999+1000
+
+        var sum = 0;
+        var i = 1;
+        while (i <= 1000) {
+            sum = sum + i;
+            i++;
+        }
+        document.write("1到1000的總和：" + sum);
+
+        ////////////////////////////////////////////////////
+
+        document.write("<hr>");
+        //用while寫畫星星的功能
+
+        var b = "";
+        var i = 1;
+        while (i <= 10) {
+            b = b + "*";
+            document.write(b + "<br>");
+            i++;
+        }
+
+
+        document.write("<hr>");
+        /////////////////////////////////
+        //雞兔同籠
+        //已知雞兔共35隻,雞兔的腳共94支,請問籠子裡雞兔各有幾隻?
+
+        var x = 0;
+        while (2 * x + 4 * (35 - x) != 94) {
+            x++;
+
+        }
+
+        document.write("雞為" + x + "隻, 兔子為" + (35 - x) + "隻");
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <span style="color:red">紅</span><span style="color:orange">橙</span><span style="color:yellow">黃</span>
+    <span style="color:green">綠</span><span style="color:blue">藍</span><span style="color:indigo">靛</span>
+    <span style="color:violet">紫</span>
+
+    <script>
+        //陣列(Array)
+        //一種資料結構，能夠儲存多個資料
+        //陣列的索引值從0開始
+        //* 1.宣告一個陣列，並將陣列的值印出來
+
+
+        var arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+
+        document.write(arr);
+        document.write("<hr>");
+
+        var b = {
+            name: "Jack",
+            age: "18",
+            phone: "0988988988"
+        }
+        document.write(typeof (b));
+
+
+        document.write("<hr>");
+        document.write(arr[0] + "<br>");
+        document.write(arr[1] + "<br>");
+        document.write(arr[2] + "<br>");
+        document.write(arr[3] + "<br>");
+        document.write(arr[4] + "<br>");
+        document.write(arr[5] + "<br>");
+        document.write(arr[6] + "<br>");
+        document.write(arr[7] + "<br>");
+        document.write(arr[8] + "<br>");
+        document.write(arr[9] + "<br>");
+
+
+        document.write("<hr>");
+
+        arr.push(11); //在陣列的最後面加入一個值
+        arr.push(12); //在陣列的最後面加入一個值
+
+        document.write(arr);
+        document.write("<hr>");
+
+        //用計數器迴圈讀取陣列的值
+        //arr.length 取得陣列的長度
+        for (var i = 0; i < arr.length; i++) {
+            document.write(arr[i] + "<br>");
+        }
+
+        document.write("<hr>");
+
+
+        //拜訪陣列的值
+        for (var item of arr) {
+            document.write(item + "<br>");
+        }
+        document.write("<hr>");
+
+        for (var index in arr) {
+            document.write(arr[index] + "<br>");
+        }
+        document.write("<hr>");
+
+
+        var Rainbow = ["紅", "橙", "黃", "綠", "藍", "靛", "紫"];
+        var RainbowColors = ["red", "orange", "yellow", "green", "blue", "indigo", "violet"];
+
+
+
+        for (var i = 0; i < Rainbow.length; i++) {
+            document.write(`<span style="color:${RainbowColors[i]}">${Rainbow[i]}</span>`);
+        }
+
+        document.write("<hr>");
+
+        for (var index in Rainbow) {
+            document.write(`<span style="color:${RainbowColors[index]}">${Rainbow[index]}</span>`);
+        }
+        document.write("<hr>");
+
+        //實例應用
+
+        /*
+        部門代碼	部門名稱
+           01	    資訊部
+           02	    管理部
+           03	    行銷部
+           04	    企劃部
+           05	    人事處
+           06	    研發處
+        */
+
+
+
+
+        var deptNo = ["01", "02", "03", "04", "05", "06"];
+        var deptName = ["資訊部", "管理部", "行銷部", "企劃部", "人事處", "研發處"];
+
+      /*   document.write("01-資訊部<br>");
+        document.write("02-管理部<br>");
+        document.write("03-行銷部<br>");
+        document.write("04-企劃部<br>"); */
+
+
+        deptNo.push("07"); //在陣列的最後面加入一個值
+        deptNo.push("08"); //在陣列的最後面加入一個值
+        deptName.push("財務部"); //在陣列的最後面加入一個值
+        deptName.push("法務部"); //在陣列的最後面加入一個值
+
+
+
+        for (var i = 0; i < deptNo.length; i++) {
+            document.write(`${deptNo[i]}-${deptName[i]}<br>`);
+        }
+        document.write("<hr>");
+
+
+    </script>
+
+
+</body>
+
+</html>

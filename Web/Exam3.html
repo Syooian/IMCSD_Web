@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //1. BMI(身體質量指數)計算(必須用回圈)
+        /**
+         * 請利用陣列變數給定三個身高值(單位為公分)與三個體重質(單位為公斤) ，計算出三個BMI值後，請找出最小的值，進行四捨五入後，在螢幕顯示出最小值，並判斷其BMI值是否在正常範圍內，若是，請顯示「最小值為○○，BMI正常」，若否，請顯示「最小值為○○，BMI不正常」。
+            	如最小BMI為20，即顯示「最小值為20，BMI正常」。
+            	ps. BMI公式為： 體重/ 身高2 ,身高須以公尺為單位。
+            	BMI正常應介於18~25間，低於18表過瘦，高於25表過胖。
+         * */
+        // 三個身高值 (單位：公分) 與三個體重值 (單位：公斤)
+        var heights = [170, 160, 150]; // 身高 (公分)
+        var weights = [65, 50, 45];    // 體重 (公斤)
+        var bmis = [];                 // 儲存 BMI 值
+
+        // 計算 BMI 值並存入陣列
+        for (var i = 0; i < heights.length; i++) {
+            var heightInMeters = heights[i] / 100; // 將身高轉換為公尺
+            var bmi = weights[i] / (heightInMeters * heightInMeters); // BMI 公式
+            bmis.push(bmi); // 將計算出的 BMI 值加入陣列
+        }
+
+        // 找出最小的 BMI 值
+        var minBmi = Math.min(...bmis); // 使用展開運算符找出最小值
+        var roundedMinBmi = Math.round(minBmi); // 四捨五入
+
+        // 判斷 BMI 是否在正常範圍內
+        if (roundedMinBmi >= 18 && roundedMinBmi <= 25) {
+            document.write("最小值為 " + roundedMinBmi + "，BMI 正常<br>");
+        } else {
+            document.write("最小值為 " + roundedMinBmi + "，BMI 不正常<br>");
+        }
+
+        document.write("<hr>");
+        //2. 求最大公因數(必須用回圈)
+        /**
+         * 請給定兩個整數變數值，求其兩數之最大公因數，並在螢幕顯示「○○與○○之最大公因數為○○」。
+         * 	如變數值為12及18，即顯示「 12及18 之最大公因數為6」。
+         * 	ps. 最大公因數的定義為某幾個整數所共同擁有的最大因數。
+         * */
+
+        // 宣告兩個整數變數
+        var num1 = 12;
+        var num2 = 18;
+
+        // 計算最大公因數的函式
+        function gcd(a, b) {
+            while (b !== 0) {
+                var temp = b;
+                b = a % b;
+                a = temp;
+            }
+            return a;
+        }
+
+        // 呼叫函式計算最大公因數
+        var result = gcd(num1, num2);
+
+        // 顯示結果
+        document.write(num1 + " 與 " + num2 + " 之最大公因數為 " + result);
+
+
+
+    </script>
+</body>
+
+</html>
