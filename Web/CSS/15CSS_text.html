@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Welcome My Homepage!!</h1>
+    <h1 style="text-decoration: overline;">Welcome My Homepage!!</h1>
+    <h1 style="text-decoration: underline;">Welcome My Homepage!!</h1>
+    <h1 style="text-decoration: line-through;">Welcome My Homepage!!</h1>
+    <h1><u>Welcome My Homepage!!</u></h1>
+
+    <h1 style="text-decoration: none;">Welcome My Homepage!!</h1>
+
+    <h1><u style="text-decoration: none;">Welcome My Homepage!!</u></h1>
+
+    <h1><a href="#" style="text-decoration: none;">test</a></h1>
+
+    <h1><a href="#" style="text-decoration: none;font-size: 3rem;font-weight: 900;color:black;cursor: text;">test</a>
+    </h1>
+
+    <hr style="height: 200px;border-color: #2acf53;background-color: rgb(112 ,56 ,25 );">
+
+    <input type="button" value="小" onclick="toSmall('0.7rem')">
+    <input type="button" value="中" onclick="toDefault('1rem')">
+    <input type="button" value="大" onclick="toLarge('2rem')">
+
+    <div id="news">
+        台北地檢署偵辦總統府被共諜滲透案，已羈押4名被告，其中民進黨前黨員黃取榮、邱世元羈押屆滿2個月，今由台北地方法院提訊開庭，黃、邱與柯文哲搭同一輛囚車抵達法院，是否順利羈押，尚待法院開庭裁定。
+        今柯文哲案開庭，共諜案邱世元、黃取榮與柯一樣被羈押在台北看守所，今早3人與他案被告一同搭囚車抵達北院，等候法官開庭。由於3人均禁見，車內均有戒護隔離座位，不會交談。黃取榮頂著白髮，穿著短袖、短褲，腳踩藍白拖，面戴口罩，火速步入法院。
+        檢調追查，民進黨新北市議員李余典前特助黃取榮，因曾在大陸經商多次出入大陸地區，遭中共情治人員吸收，返台以情報換取金錢；黃取榮涉找上好友、民進黨民主學院前副主任邱世元，吸收時任賴清副總統機要吳尚雨，從吳尚雨手中拿取賴清德出訪友邦等機敏資料，賴擔任總統後，吳任職總統辦公室聘用諮議；黃取榮涉透過邱世元吸收國安會秘書長吳釗燮擔任外交部長時的核心助理何仁傑，吳、何涉交付公務機密文件給邱、黃，再轉交給中共情治人員，依資訊重要性、機密性取得不等金錢。
+        另，總統府辦公室前諮議吳尚雨羈押期限將屆滿，檢方聲請延押，將於近日開庭。何仁傑剛被羈押，羈押期限未滿。
+    </div>
+
+
+    <script>
+        var news = document.getElementById("news");
+
+        function fontSizeChange(fs) {
+            news.style.fontSize = fs;
+        }
+
+        /* function toLarge() {
+            news.style.fontSize = "2rem";
+        }
+        function toDefault() {
+            news.style.fontSize = "1rem";
+        }
+        function toSmall() {
+            news.style.fontSize = "0.7rem";
+        } */
+
+    </script>
+
+</body>
+
+</html>

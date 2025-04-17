@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body style="font-size: 10pt;">
+    <h1>ASDZXCQWE</h1>
+    <h1 style="font-size: 100pt; font-weight: 900;">ASDZXCQWE</h1>
+
+    <hr>
+    <div style="font-size: 10pt;">
+        <h1 style="font-size: larger;">ASDZXCQWE Larger</h1><!--Size以Body為基準-->
+        <h1 style="font-size: xx-large;">ASDZXCQWE XX-Large</h1>
+        <h1 style="font-size: x-large;">ASDZXCQWE X-Large</h1>
+        <h1 style="font-size: large;">ASDZXCQWE Large</h1>
+        <h1 style="font-size: medium;">ASDZXCQWE Medium</h1>
+        <h1 style="font-size: small;">ASDZXCQWE Small</h1>
+        <h1 style="font-size: x-small;">ASDZXCQWE X-Small</h1>
+        <h1 style="font-size: xx-small;">ASDZXCQWE XX-Small</h1>
+        <h1 style="font-size: smaller;">ASDZXCQWE Smaller</h1><!--Size以Body為基準-->
+    </div>
+    <hr>
+
+    <div style="font-size: 5rem;"></div>
+    <!--rem:不管原本是幾階層，一律以基底的值計算(12pt)-->
+
+    <h1 style="font-family: 'Courier New', Courier, monospace, 標楷體;">QWEASDZXC</h1><!--字體使用先後順序-->
+
+    <h1 style="text-decoration: overline;">ASDZXCQWE Overline</h1><!--上劃線-->
+    <h1 style="text-decoration: underline;">ASDZXCQWE Underline</h1><!--下劃線-->
+    <h1 style="text-decoration: line-through;">ASDZXCQWE Line-through</h1><!--刪除線-->
+    <h1 style="text-decoration: none;">ASDZXCQWE None</h1><!--不要裝飾-->
+
+    <hr
+        style="height: 10px; background-color: red;border-color: #000000; border-width: 10px;border-right-color: #00FF00; border-radius: 10px;">
+
+    <!--***************************************************************************-->
+    <input type="Button" value="小" onclick="NewsTextSize(10)">
+    <input type="Button" value="中" onclick="NewsTextSize(20)">
+    <input type="Button" value="大" onclick="NewsTextSize(30)">
+    <div id="News">
+        前幾天提到了TVR以後，高雄的車友亦找出了一年前在高雄曝光的Aston Martin Lagonda。
+
+        此車也是當年汎揚國際所引進的，當年一共引進兩部，一黑一白，這部白色的在南部，而黑色的據云是商業名人蔡辰洋所購買。
+
+        此車是相當長壽的車款，1976年時亮相，並開始接單後由於發現車上搭載的大量電子設備無法順利量產，因此到了1979年才開始交車，此後一直生產到了1990年停產，僅僅只有645部Lagonda被交到車主手上，台灣就有兩部也算彌足珍貴，特別是均為停產前的1989年所引進，更別具意義。
+
+        此車搭載5.3L V8引擎，可輸出280hp馬力，0~100km/h加速需時8秒，極速則為224km/h，以現今的眼光來看已稱不上性能車款，但是在當年可是石破天驚的超豪華大型性能房車呢！
+    </div>
+    <script>
+        var news = document.getElementById("News");
+
+        function NewsTextSize(FontSize) {
+            news.style.fontSize = FontSize + "pt";
+        }
+    </script>
+    <!--***************************************************************************-->
+
+</body>
+
+</html>
