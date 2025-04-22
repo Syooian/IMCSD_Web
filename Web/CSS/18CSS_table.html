@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        #table1{
+            border:2px double black;
+            width: 400px;
+
+        }
+        #table1 td, #table1 th{
+            border:5px solid black;
+        
+        }
+     
+        #table1>tbody>tr:first-child>td:last-child{
+            color:red;
+        }
+
+        #table1>tbody>tr:first-child>td:nth-child(3){
+            color:green;
+        }
+
+        #table1 tr:hover{
+            background-color: yellow;
+            color:red;
+            font-size: 1.2rem;
+            border:3px solid purple;
+        }
+        a:hover{
+            color:red;
+            text-decoration: underline;
+            background-color: yellow;
+            font-size: 1.5rem;
+        }
+        a:link{
+            color:green;
+            text-decoration: none;;
+        }
+
+        a:active{
+            color:rgb(36, 87, 145);
+            text-decoration: underline;
+            background-color: yellow;
+        }
+
+        a:visited{
+            color:rgb(248, 186, 52);
+         
+        }
+       
+    </style>
+</head>
+<body>
+
+    <a href="#">我的超鏈結</a>
+    <hr>
+    <table id="table1">
+        <caption>成績單</caption>
+        <thead>
+            <tr>
+                <th>姓名</th>
+                <th>國文</th>
+                <th>數學</th>
+                <th>英文</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr>
+                <td>張三</td>
+                <td>88</td>
+                <td>95</td>
+                <td>54</td>
+
+            </tr>
+            <tr>
+                <td>李四</td>
+                <td>76</td>
+                <td>80</td>
+                <td>75</td>
+
+            </tr>
+            <tr>
+                <td>王五</td>
+                <td>78</td>
+                <td>91</td>
+                <td>98</td>
+
+            </tr>
+        </tbody>
+        
+        <tfoot>
+            <tr>
+                <td colspan="4">製表人:小明</td>
+
+
+            </tr>
+        </tfoot>
+
+    </table>
+    <hr>
+
+    <table id="table2">
+        <tr>
+            <td></td>
+            <td>a</td>
+            <td>bc</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>123</td>
+            <td></td>
+        </tr>
+    </table>
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <style>
+
+        #table1{
+            border: 5px double black;
+            margin: auto;
+
+        }
+        #table1>thead>tr>th{
+            background-color: #e4020286;
+            color: white;
+        }
+
+        #table1>tbody>tr:nth-child(2n){
+          
+           background-color: aquamarine;
+        }
+
+        #table1>tbody>tr:nth-child(2n+1){
+            background-color: #e4e2e2;
+          
+        }
+
+
+        #table1>tbody>tr:hover{
+            background-color: yellow;
+           
+        }
+    </style>
+
+
+</head>
+<body>
+    <table id="table1">
+        
+
+    </table>
+
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        $.ajax({
+            type: 'get',
+            url: 'https://data.moa.gov.tw/Service/OpenData/ODwsv/ODwsvAttractions.aspx',
+            success: function (data) {
+                var item = `<thead>
+                                <tr>
+                                    <th>圖片</th>
+                                    <th>名稱</th>
+                                    <th>電話</th>
+                                    <th>地址</th>
+                                </tr>
+                            </thead>`;
+                for (var i = 0; i < data.length; i++) {
+                    item += `<tr>
+                                                <td><img src="${data[i].Photo}" width="150" /></td>
+                                                <td>${data[i].Name}</td>
+                                                <td>${data[i].Tel}</td>
+                                                <td>${data[i].City}${data[i].Town}${data[i].Address}</td>
+                                                
+                                            </tr>`;
+                    
+                }
+                $('#table1').append(item);
+            }
+
+        });
+
+    </script>
+</body>
+</html>

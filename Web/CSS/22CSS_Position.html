@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #container {
+            margin: auto;
+            width: 1266px;
+            position: relative;
+        }
+
+
+        #container>section {
+            display: flex;
+            flex-direction: row;
+
+
+        }
+
+        #banner1 {
+            position: absolute;
+            ;
+            left: 0;
+            top: 0
+        }
+
+        #banner2 {
+            position: fixed;
+            ;
+            right: 0;
+            top: 0
+        }
+
+        #ad {
+            position: absolute;
+            left: 106px;
+            top: 50px;
+            box-shadow: 0 0 20px #000;
+
+           
+        }
+
+        #ad>span {
+            background-color: pink;
+            color: red;
+            padding: 10px;
+            cursor: pointer;
+            
+        }
+
+        .hidden{
+            display: none;
+        }
+
+    </style>
+</head>
+
+<body>
+    <img src="css/banner2.jpg" id="banner2">
+    <img src="css/banner1.jpg" id="banner1">
+
+
+
+    <div id="container">
+        <div id="ad">
+            <span onclick="hide()">點我關閉</span><br>
+            <img src="css/ad.jpg">
+        </div>
+        <header>
+            <img src="CSS/top.jpg">
+        </header>
+        <section>
+            <nav>
+                <img src="CSS/left.jpg">
+            </nav>
+            <article>
+                <img src="CSS/right.jpg">
+            </article>
+        </section>
+        <footer>
+            <img src="CSS/bottom.jpg">
+        </footer>
+
+    </div>
+
+
+
+
+    <script>
+        var ad = document.getElementById("ad");
+
+        //第一種寫法:操作CSS屬性
+        /* function hide() {
+            ad.style.display = "none";
+        } */
+
+        //第二種寫法
+        function hide() {
+            ad.className="hidden";
+        }
+
+    </script>
+</body>
+
+</html>

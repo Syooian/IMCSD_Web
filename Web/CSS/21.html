@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<style>
+    #Container {}
+
+    #Container>header {
+        background-color: yellow;
+        height: 250px;
+        width: 100%;
+    }
+    #Container>nav {
+        background-color: aqua;
+        width: 20%;
+        height: 500px;
+        float:left/*物件浮後起來向左靠*/
+    }
+    #Container>section {
+        background-color: #e4e2e2;
+        width: 80%;
+        height: 500px;
+        float: right;/*物件浮後起來向右靠*/
+    }
+    #Container>footer{
+        background-color: blueviolet;
+        clear: both;/*清除float浮動對我的影響*/
+    }
+</style>
+
+<body>
+    <div id="Container">
+        <header>Header</header>
+        <nav>Nav</nav>
+        <section>Section</section>
+        <footer>Footer</footer>
+    </div>
+</body>
+
+</html>

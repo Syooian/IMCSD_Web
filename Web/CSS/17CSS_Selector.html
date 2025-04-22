@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        /*
+            CSS基底的三種選擇器
+
+            1.Tag Selector 標籤選擇器
+            2.Class Selector 類別選擇器
+            3.ID Selector ID選擇器
+
+            修先層級ID>Class>Tag
+        */
+        #John {
+
+            font-size: 5rem;
+        }
+
+        #Mary {
+            color: chocolate;
+        }
+
+        .Jack {
+            color: blue;
+            background-color: pink;
+        }
+
+        .h1 {
+            font-weight: bold;
+            font-size: 3rem;
+            color: green;
+        }
+
+        h1 {
+            color: red;
+            background-color: yellow;
+            font-size: 5rem;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <!--InLine的css層級最大，優於每個選擇器-->
+    <div class="h1" id="John" style="color: blueviolet;">Welcome My Homepage!! 1</div>
+
+    <h1 id="Mary">Welcome My Homepage!! 2</h1>
+    <h1 class="Jack">Welcome My Homepage!! 3</h1>
+    <h1>Welcome My Homepage!!</h1>
+    <h1 class="Jack">Welcome My Homepage!!</h1>
+    <p class="Jack">Welcome My Homepage!!</p>
+    <h1>Welcome My Homepage!!</h1>
+    <h1>Welcome My Homepage!!</h1>
+    <h1 class="Jack">Welcome My Homepage!!</h1>
+    <div class="h1">Welcome My Homepage!!</div>
+    <h1>Welcome My Homepage!!</h1>
+    <h1>Welcome My Homepage!!</h1>
+    <h1>Welcome My Homepage!!</h1>
+    <h2 class="Jack">Welcome My Homepage!!</h2>
+
+</body>
+
+</html>
