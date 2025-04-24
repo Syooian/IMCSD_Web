@@ -1,14 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-</head>
-<body>
-    
-    <audio src="music/moon.mp3" controls></audio>
+    <style>
+        #controlPanel {
+            border: 4px solid black;
+            width: 800px;
+            padding: 20px;
+            margin: auto;
+            border-radius: 5px;
+        }
 
-    
+        #controlPanel span {
+            border: 1px solid black;
+            cursor: pointer;
+            font-size: 3rem;
+            box-shadow: 3px 3px 7px black;
+            padding: 3px;
+            font-family: webdings;
+        }
+    </style>
+</head>
+
+<body>
+
+    <audio src="music/moon.mp3" controls id="myMusic"></audio>
+    <hr>
+    <div id="controlPanel">
+        <span onclick="playMusic()">4</span>
+        <!--  <span onclick="pauseMusic()">;</span> -->
+        <span onclick="stopMusic()">&lt;</span>
+
+
+    </div>
+
+    <script>
+        //使用者觸發click事件,則播放音樂
+        var myMusic = document.getElementById("myMusic");
+        //var controlPanel = document.getElementById("controlPanel");
+
+
+        //播放音樂
+        function playMusic() {
+            //console.log(event.target);
+            myMusic.play();
+            event.target.innerHTML = ";";
+            event.target.onclick = pauseMusic;
+
+        }
+
+        //暫停音樂
+        function pauseMusic() {
+            myMusic.pause();
+            event.target.innerHTML = "4";
+            event.target.onclick = playMusic;
+        }
+
+        //音樂停止
+        function stopMusic() {
+            //音樂要停下來 且 時間歸零
+            myMusic.pause();
+            myMusic.currentTime = 0;
+            event.target.previousElementSibling.innerHTML = "4";
+        }
+
+    </script>
+
+
 </body>
+
 </html>
