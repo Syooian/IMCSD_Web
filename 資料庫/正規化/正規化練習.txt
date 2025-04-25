@@ -1,0 +1,3 @@
+紅：PK
+綠：FK
+橘：PFK (PK+FK)
