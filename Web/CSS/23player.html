@@ -6,6 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
+        .setMute {
+            text-decoration: line-through;
+            background-color: pink;
+        }
+
         #controlPanel {
             border: 4px solid black;
             width: 800px;
@@ -30,18 +35,68 @@
     <audio src="music/moon.mp3" controls id="myMusic"></audio>
     <hr>
     <div id="controlPanel">
-        <span onclick="playMusic()">4</span>
-        <!--  <span onclick="pauseMusic()">;</span> -->
-        <span onclick="stopMusic()">&lt;</span>
-
-
+        <div id="functionButtons">
+            <span onclick="playMusic()">4</span>
+            <!--  <span onclick="pauseMusic()">;</span> -->
+            <span onclick="stopMusic()">&lt;</span>
+            <span onclick="changeTime(-5)">7</span>
+            <span onclick="changeTime(5)">8</span>
+            <span onclick="setMute()">U</span>
+        </div>
+        <hr>
+        <div id="volumeControl">
+            <input type="range" oninput="setVolumeByRangeBar()" value="100">
+            <button onclick="changeVolume(-1)">-</button>
+            <button onclick="changeVolume(1)">+</button>
+            <input type="text" value="100" readonly>
+        </div>
     </div>
 
     <script>
         //使用者觸發click事件,則播放音樂
         var myMusic = document.getElementById("myMusic");
+        var volumeControl = document.getElementById("volumeControl");
         //var controlPanel = document.getElementById("controlPanel");
 
+        var txtVolume = volumeControl.children[3];
+        var rangeVolume = volumeControl.children[0];
+
+        //音量調整
+        function setVolumeByRangeBar() {
+            //console.log(event.target.value);
+            txtVolume.value = rangeVolume.value;          
+            myMusic.volume = txtVolume.value / 100; //真正寫入音量屬性值
+        }
+
+        //音量調整
+        function changeVolume(v) {
+            rangeVolume.value = parseInt(rangeVolume.value) + v;
+            setVolumeByRangeBar() ;
+        }
+
+
+        //靜音
+        function setMute() {
+            myMusic.muted = !myMusic.muted;
+            //event.target.innerHTML = event.target.innerHTML == "U" ? "V" : "U";
+            event.target.className = event.target.className == "setMute" ? "" : "setMute";
+        }
+
+        //快轉倒轉
+        function changeTime(s) {
+            myMusic.currentTime += s;
+        }
+
+
+        //倒轉
+        /*   function prevTime() {
+              myMusic.currentTime -= 5;
+          } */
+
+        //快轉
+        /* function nextTime() {
+            myMusic.currentTime += 5;
+        } */
 
         //播放音樂
         function playMusic() {

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .Muted {
+            background-color: pink;
+        }
+
+        #Btns {
+            border: 5px solid black;
+            border-radius: 10px;
+            padding: 20px;
+            width: 800px;
+            margin: auto;
+        }
+
+        #Btns span {
+            border: 1px solid black;
+            cursor: pointer;
+            font-size: 1.5rem;
+            box-shadow: 3px 3px 7px black;
+            padding: 3px;
+            font-family: webdings;
+        }
+    </style>
+</head>
+
+<body>
+
+    <audio controls id="MusicPlayer">
+        <source src="../music/moon.mp3">
+        <source src="../music/airball.mp3">
+    </audio>
+
+    <hr>
+    <div id="Btns">
+        <span onclick="PlayPauseMusic()">4</span><!--播放/暫停-->
+
+        <!--<span onclick="playMusic()">4</span>--><!--播放-->
+        <!--<span onclick="pauseMusic()">;</span>--><!--暫停-->
+
+        <span onclick="stopMusic()">&lt;</span>
+        <span onclick="LastMusic()">9</span><!--上一首-->
+        <span onclick="MusicSeek(-5)">7</span><!--快退-->
+        <span onclick="MusicSeek(5)">8</span><!--快進-->
+        <span onclick="NextMusic()">⏭</span><!--下一首-->
+
+        <span onclick="SetMute()">U</span><!--靜音-->
+        <span onclick="SetLoop()">循環</span><!--循環-->
+        <hr>
+
+        <div id="VolumeControl">
+            <input type="range" id="Volume" min="0" max="100" value="100"
+               oninput="VolumeChange(this.value)">
+            <input type="text" id="VolumeText" readonly>
+        </div>
+
+    </div>
+
+    <script>
+        //使用者觸發click事件,則播放音樂
+        let MusicPlayer = document.getElementById("MusicPlayer");
+        //播放音樂
+        function playMusic() {
+            MusicPlayer.play();
+        }
+
+        function pauseMusic() {
+            MusicPlayer.pause();
+        }
+
+        let PlayPauseButton = document.getElementById("Btns").children[0];
+        function PlayPauseMusic() {
+            if (MusicPlayer.paused) {
+                MusicPlayer.play();
+                PlayPauseButton.innerHTML = ";"; //更改按鈕顯示為暫停
+            } else {
+                MusicPlayer.pause();
+                PlayPauseButton.innerHTML = "4"; //更改按鈕顯示為播放
+            }
+        }
+
+        function stopMusic() {
+            MusicPlayer.pause();
+            MusicPlayer.currentTime = 0; //將音樂播放時間歸零
+            PlayPauseButton.innerHTML = "4"; //更改按鈕顯示為播放
+        }
+
+        function LastMusic() {
+            MusicPlayer.lastMusic();
+        }
+        function MusicSeek(Time) {
+            MusicPlayer.currentTime += Time;
+        }
+        function NextMusic() {
+            MusicPlayer.nextMusic();
+        }
+
+        //靜音
+        function SetMute() {
+            //MusicPlayer.muted = !MusicPlayer.muted; //切換靜音狀態
+
+            //event.target.innerHTML = MusicPlayer.muted ? "V" : "U"; //更改按鈕顯示
+            if (MusicPlayer.muted) {
+                MusicPlayer.muted = false;
+                event.target.innerHTML = "V"; //添加靜音樣式
+                event.target.className = "Muted";
+            } else {
+                MusicPlayer.muted = true;
+                event.target.innerHTML = "U"; //移除靜音樣式
+                event.target.className = "";
+            }
+        }
+        //循環
+        function SetLoop() {
+            MusicPlayer.SetLoop();
+        }
+
+        //--------------------------------------------------音量
+        var VolumeControl= document.getElementById("VolumeControl");
+        function VolumeChange(Volume) {
+            MusicPlayer.volume = Volume / 100;
+
+            //console.log(Volume);
+            //document.getElementById("VolumeText").value = Volume;
+            VolumeControl.children[1].value = Volume; //更新音量顯示
+        }
+        //---------------------------------------------------音量
+
+    </script>
+
+
+</body>
+
+</html>
