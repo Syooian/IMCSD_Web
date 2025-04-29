@@ -107,12 +107,12 @@
             //event.target.innerHTML = MusicPlayer.muted ? "V" : "U"; //更改按鈕顯示
             if (MusicPlayer.muted) {
                 MusicPlayer.muted = false;
-                event.target.innerHTML = "V"; //添加靜音樣式
-                event.target.className = "Muted";
-            } else {
-                MusicPlayer.muted = true;
                 event.target.innerHTML = "U"; //移除靜音樣式
                 event.target.className = "";
+            } else {
+                MusicPlayer.muted = true;
+                event.target.innerHTML = "V"; //添加靜音樣式
+                event.target.className = "Muted";
             }
         }
         //循環
