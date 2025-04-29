@@ -6,6 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
+        /*全局變數*/
+        :root {
+            /*音量拉條上的點*/
+            --VolThumb_Appearance: none;
+            --VolThumb_BackgroundColor: aqua;
+            --VolThumb_Height:40px;
+            --VolThumb_Width: 25px;
+            --VolThumb_BorderRadius: 5px;
+            --VolThumb_Border: 3px solid black;
+        }
+
         .Muted {
             background-color: pink;
         }
@@ -25,6 +36,37 @@
             box-shadow: 3px 3px 7px black;
             padding: 3px;
             font-family: webdings;
+        }
+
+        /*音量拉條*/
+        #VolumeControl>input[type="range"] {
+            appearance: none;
+            border: 1px solid black;
+            border-radius: 10px;
+            background-color: bisque;
+            /*padding: 20px;*/
+            width: 80%;
+            height: 30px;
+            margin: auto;
+        }
+
+        /*音量拉條上的點*/
+        #VolumeControl>input[type="range"]::-webkit-slider-thumb {
+            appearance: var(--VolThumb_Appearance);
+            background-color: var(--VolThumb_BackgroundColor);
+            height: var(--VolThumb_Height);
+            width: var(--VolThumb_Width);
+            border-radius: var(--VolThumb_BorderRadius);
+            border: var(--VolThumb_Border);
+        }
+        /*音量拉條上的點 (對火狐用)*/
+        #VolumeControl>input[type="range"]::-moz-range-thumb {
+            appearance: var(--VolThumb_Appearance);
+            background-color: var(--VolThumb_BackgroundColor);
+            height: var(--VolThumb_Height);
+            width: var(--VolThumb_Width);
+            border-radius: var(--VolThumb_BorderRadius);
+            border: var(--VolThumb_Border);
         }
     </style>
 </head>
@@ -54,9 +96,14 @@
         <hr>
 
         <div id="VolumeControl">
-            <input type="range" id="Volume" min="0" max="100" value="100"
-               oninput="VolumeChange(this.value)">
-            <input type="text" id="VolumeText" readonly>
+            <!--音量拉條-->
+            <input type="range" id="Volume" min="0" max="100" value="100" oninput="VolumeChange(this.value)">
+
+            <input type="text" id="VolumeText" readonly 
+                style=" width: 30px; 
+                            background-color: black; 
+                            color: yellow;
+                            text-align: center;">
         </div>
 
     </div>
@@ -121,7 +168,7 @@
         }
 
         //--------------------------------------------------音量
-        var VolumeControl= document.getElementById("VolumeControl");
+        var VolumeControl = document.getElementById("VolumeControl");
         function VolumeChange(Volume) {
             MusicPlayer.volume = Volume / 100;
 

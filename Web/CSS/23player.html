@@ -6,6 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
+        :root{
+            --vol-thumb-appearance: none;
+            --vol-thumb-width: 40px;
+            --vol-thumb-height: 25px;
+            --vol-thumb-background-color: black;
+            --vol-thumb-border-radius: 5px;
+            --vol-thumb-border: 3px solid white
+        }
+
+
         .setMute {
             text-decoration: line-through;
             background-color: pink;
@@ -26,6 +36,48 @@
             box-shadow: 3px 3px 7px black;
             padding: 3px;
             font-family: webdings;
+        }
+
+        #volumeControl>input[type="text"] {
+            width: 30px;
+            background-color: black;
+            color: yellow;
+            text-align: center;
+
+        }
+
+        #volumeControl>input[type="range"] {
+            width: 700px;
+            height: 10px;
+            appearance: none;
+            background-color: rgb(240, 240, 240);
+
+            border: 1px solid gray;
+        }
+
+
+        #volumeControl>input[type="range"]::-webkit-slider-thumb {
+            appearance: var(--vol-thumb-appearance);
+            width: var(--vol-thumb-width);
+            height: var(--vol-thumb-height);
+            background-color: var(--vol-thumb-background-color);
+            border-radius: var(--vol-thumb-border-radius);
+            border: var(--vol-thumb-border);
+        }
+
+        #volumeControl>input[type="range"]::-moz-range-thumb {
+            appearance: var(--vol-thumb-appearance);
+            width: var(--vol-thumb-width);
+            height: var(--vol-thumb-height);
+            background-color: var(--vol-thumb-background-color);
+            border-radius: var(--vol-thumb-border-radius);
+            border: var(--vol-thumb-border);
+        }
+
+        #volumeControl>button {
+            border-radius: 50%;
+            border-width: 1px;
+
         }
     </style>
 </head>
@@ -64,14 +116,14 @@
         //音量調整
         function setVolumeByRangeBar() {
             //console.log(event.target.value);
-            txtVolume.value = rangeVolume.value;          
+            txtVolume.value = rangeVolume.value;
             myMusic.volume = txtVolume.value / 100; //真正寫入音量屬性值
         }
 
         //音量調整
         function changeVolume(v) {
             rangeVolume.value = parseInt(rangeVolume.value) + v;
-            setVolumeByRangeBar() ;
+            setVolumeByRangeBar();
         }
 
 
