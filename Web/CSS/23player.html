@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        :root{
+        :root {
             --vol-thumb-appearance: none;
             --vol-thumb-width: 40px;
             --vol-thumb-height: 25px;
@@ -50,7 +50,10 @@
             width: 700px;
             height: 10px;
             appearance: none;
-            background-color: rgb(240, 240, 240);
+            /* background-color: rgb(240, 240, 240); */
+
+
+
 
             border: 1px solid gray;
         }
@@ -79,6 +82,10 @@
             border-width: 1px;
 
         }
+
+        #information>div {
+            text-align: center;
+        }
     </style>
 </head>
 
@@ -97,10 +104,16 @@
         </div>
         <hr>
         <div id="volumeControl">
-            <input type="range" oninput="setVolumeByRangeBar()" value="100">
+            <input type="range" oninput="setVolumeByRangeBar()" value="70">
             <button onclick="changeVolume(-1)">-</button>
             <button onclick="changeVolume(1)">+</button>
             <input type="text" value="100" readonly>
+        </div>
+        <hr>
+        <div id="information">
+            <div>00:00 / 00:00</div>
+            <div>歡迎使用我的播放器</div>
+            <div>正常</div>
         </div>
     </div>
 
@@ -108,16 +121,41 @@
         //使用者觸發click事件,則播放音樂
         var myMusic = document.getElementById("myMusic");
         var volumeControl = document.getElementById("volumeControl");
-        //var controlPanel = document.getElementById("controlPanel");
+        var information = document.getElementById("information");
 
         var txtVolume = volumeControl.children[3];
         var rangeVolume = volumeControl.children[0];
+
+        var musicDuration = information.children[0];
+
+        //時間格式
+        function getTimeFormat(t) {
+            var min = parseInt(t.toFixed(0) / 60);
+            var sec = parseInt(t.toFixed(0) % 60);
+
+            min = min < 10 ? "0" + min : min;
+            sec = sec < 10 ? "0" + sec : sec;
+
+            return min + ":" + sec;
+        }
+
+
+        //音樂播放時間
+        function setMusicDuration() {
+            musicDuration.innerHTML = getTimeFormat(myMusic.currentTime) + " / " + getTimeFormat(myMusic.duration);
+        }
+
+
+        setVolumeByRangeBar(); //初始化音量
 
         //音量調整
         function setVolumeByRangeBar() {
             //console.log(event.target.value);
             txtVolume.value = rangeVolume.value;
             myMusic.volume = txtVolume.value / 100; //真正寫入音量屬性值
+
+            //塗音量條的顏色
+            rangeVolume.style.backgroundImage = `linear-gradient(to right, rgb(255, 179, 14) ${rangeVolume.value}%,rgb(240, 240, 240) ${rangeVolume.value}%)`;
         }
 
         //音量調整
@@ -156,6 +194,9 @@
             myMusic.play();
             event.target.innerHTML = ";";
             event.target.onclick = pauseMusic;
+
+            setInterval(setMusicDuration, 1000); //每秒更新一次音樂時間
+
 
         }
 

@@ -11,7 +11,7 @@
             /*音量拉條上的點*/
             --VolThumb_Appearance: none;
             --VolThumb_BackgroundColor: aqua;
-            --VolThumb_Height:40px;
+            --VolThumb_Height: 40px;
             --VolThumb_Width: 25px;
             --VolThumb_BorderRadius: 5px;
             --VolThumb_Border: 3px solid black;
@@ -44,7 +44,7 @@
             border: 1px solid black;
             border-radius: 10px;
             /*background-color: bisque;*/
-            background-image: linear-gradient(to right, #f06 , #4a90e2);
+            background-image: linear-gradient(to right, #f06, #4a90e2);
             width: 80%;
             height: 30px;
             margin: auto;
@@ -59,6 +59,7 @@
             border-radius: var(--VolThumb_BorderRadius);
             border: var(--VolThumb_Border);
         }
+
         /*音量拉條上的點 (對火狐用)*/
         #VolumeControl>input[type="range"]::-moz-range-thumb {
             appearance: var(--VolThumb_Appearance);
@@ -67,6 +68,10 @@
             width: var(--VolThumb_Width);
             border-radius: var(--VolThumb_BorderRadius);
             border: var(--VolThumb_Border);
+        }
+
+        #PlayingInfo>text {
+            text-align: center;
         }
     </style>
 </head>
@@ -98,12 +103,16 @@
         <div id="VolumeControl">
             <!--音量拉條-->
             <input type="range" id="Volume" min="0" max="100" value="100" oninput="VolumeChange(this.value)">
-
-            <input type="text" id="VolumeText" readonly 
-                style=" width: 30px; 
+            <input type="text" id="VolumeText" readonly value="100" style=" width: 30px; 
                             background-color: black; 
                             color: yellow;
                             text-align: center;">
+        </div>
+
+        <hr>
+
+        <div id="PlayingInfo">
+            <div id="MusicTime">--:--/--:--</div>
         </div>
 
     </div>
@@ -125,6 +134,8 @@
             if (MusicPlayer.paused) {
                 MusicPlayer.play();
                 PlayPauseButton.innerHTML = ";"; //更改按鈕顯示為暫停
+
+                setInterval(SetMusicTime, 500);
             } else {
                 MusicPlayer.pause();
                 PlayPauseButton.innerHTML = "4"; //更改按鈕顯示為播放
@@ -180,7 +191,25 @@
             VolumeControl.children[0].style.backgroundImage = `linear-gradient(to right, #f06 ${Volume}%, #4a90e2 ${Volume}%)`;
             //background-image: linear-gradient(to right, #f06 , #4a90e2);
         }
+        VolumeChange(100);
         //---------------------------------------------------音量
+        var PlayingInfo = document.getElementById("PlayingInfo");
+
+        var MusicTime = PlayingInfo.children[0];
+        function SetMusicTime() {
+            //MusicTime.innerHTML="ASDASD";
+
+            MusicTime.innerHTML = GetTimeFormat(MusicPlayer.currentTime) + "/" + GetTimeFormat(MusicPlayer.duration);
+        }
+
+        function GetTimeFormat(t) {
+            //總秒數轉換為00:00格式文字
+
+            var Min = parseInt(t.toFixed(0) / 60);
+            var Sec = parseInt(t.toFixed(0) % 60);
+
+            return Min.toString().padStart(2, '0') + ":" + Sec.toString().padStart(2, '0');
+        }
 
     </script>
 
