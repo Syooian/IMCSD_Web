@@ -43,8 +43,8 @@
             appearance: none;
             border: 1px solid black;
             border-radius: 10px;
-            background-color: bisque;
-            /*padding: 20px;*/
+            /*background-color: bisque;*/
+            background-image: linear-gradient(to right, #f06 , #4a90e2);
             width: 80%;
             height: 30px;
             margin: auto;
@@ -174,7 +174,11 @@
 
             //console.log(Volume);
             //document.getElementById("VolumeText").value = Volume;
-            VolumeControl.children[1].value = Volume; //更新音量顯示
+            VolumeControl.children[1].value = Volume; //更新音量值的文字顯示
+
+            //動態調整音量拉條的背景色
+            VolumeControl.children[0].style.backgroundImage = `linear-gradient(to right, #f06 ${Volume}%, #4a90e2 ${Volume}%)`;
+            //background-image: linear-gradient(to right, #f06 , #4a90e2);
         }
         //---------------------------------------------------音量
 
