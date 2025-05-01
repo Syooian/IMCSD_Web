@@ -61,9 +61,6 @@
             appearance: none;
             /* background-color: rgb(240, 240, 240); */
 
-
-
-
             border: 1px solid gray;
         }
 
@@ -131,6 +128,14 @@
             border-radius: var(--progress-border-radius);
             transition: var(--progress-transition);
         }
+
+        #musicList {
+            width: 100%;
+            font-size: 16pt;
+            text-align: center;
+            background-color: rgb(217, 233, 228);
+            font-weight: 900;
+        }
     </style>
 </head>
 
@@ -139,6 +144,15 @@
     <audio src="music/moon.mp3" title="五月天-私奔到月球" controls id="myMusic"></audio>
     <hr>
     <div id="controlPanel">
+        <select id="musicList">
+            <option value="music/moon.mp3">五月天-私奔到月球</option>
+            <option value="music/airball.mp3">周杰倫-告白汽球</option>
+            <option value="music/elysees.mp3">Elysees</option>
+            <option value="music/nothing.mp3">Nothing Ganna Change My Love For You</option>
+            <option value="music/rain.mp3">Rhythm Of The Rain</option>
+            <option value="music/travel.mp3">校長-帶你去旅行</option>
+        </select>
+        <hr>
         <div id="functionButtons">
             <span onclick="playMusic()">4</span>
             <!--  <span onclick="pauseMusic()">;</span> -->
@@ -155,7 +169,7 @@
             <input type="text" value="100" readonly>
         </div>
         <hr>
-        <input type="range" id="progressBar" min="0" value="0">
+        <input type="range" id="progressBar" min="0" value="0" oninput="setProgress()">
         <hr>
         <div id="information">
             <div>00:00 / 00:00</div>
@@ -191,6 +205,12 @@
             return min + ":" + sec;
         }
 
+        function setProgress() {
+
+            myMusic.currentTime = progressBar.value / 10000; //更新音樂的當前時間
+        }
+
+
 
         //音樂播放時間
         function setMusicDuration() {
@@ -204,8 +224,9 @@
 
         }
 
-        function ProgressInitial(){
-            progressBar.max = myMusic.duration*10000; //音樂的總長度
+        //目前歌曲的長度初始化
+        function ProgressInitial() {
+            progressBar.max = myMusic.duration * 10000; //音樂的總長度
             setInterval(setMusicDuration, 10); //每秒更新一次音樂時間
         }
 
@@ -251,8 +272,8 @@
             myMusic.currentTime += 5;
         } */
 
-        function updateInfo(txt){
-            playStatus.innerHTML = text;
+        function updateInfo(txt) {
+            playStatus.innerHTML = txt;
         }
 
 

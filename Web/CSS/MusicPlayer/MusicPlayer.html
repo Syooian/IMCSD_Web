@@ -111,7 +111,7 @@
 
         <hr>
         <!--進度條-->
-        <input type="range" id="ProgressBar" min="0" max="100" value="0" style="appearance: none;">
+        <input type="range" id="ProgressBar" min="0" max="100" value="0">
         <hr>
 
         <div id="PlayingInfo">
@@ -240,7 +240,7 @@
 
                 //進度條填色
                 var W = MusicPlayer.duration / MusicPlayer.currentTime * 100;
-                ProgressBar.style.backgroundImage = `linear-gradient(to right, #f06 ${W}%, #white ${W}%)`;
+                ProgressBar.style.backgroundImage = `linear-gradient(to right, #f06 ${W}%, #4a90e2 ${W}%)`;
             }
         }
 
