@@ -110,6 +110,9 @@
         </div>
 
         <hr>
+        <!--進度條-->
+        <input type="range" id="ProgressBar" min="0" max="100" value="0">
+        <hr>
 
         <div id="PlayingInfo">
             <div id="MusicTime">--:--/--:--</div>
@@ -120,14 +123,16 @@
     <script>
         //使用者觸發click事件,則播放音樂
         let MusicPlayer = document.getElementById("MusicPlayer");
-        //播放音樂
-        function playMusic() {
-            MusicPlayer.play();
-        }
+        var ProgressBar = document.getElementById("ProgressBar");
 
-        function pauseMusic() {
-            MusicPlayer.pause();
-        }
+        //播放音樂
+        // function playMusic() {
+        //     MusicPlayer.play();
+        // }
+
+        // function pauseMusic() {
+        //     MusicPlayer.pause();
+        // }
 
         let PlayPauseButton = document.getElementById("Btns").children[0];
         function PlayPauseMusic() {
@@ -137,6 +142,8 @@
                 PlayPauseButton.innerHTML = ";"; //更改按鈕顯示為暫停
 
                 setInterval(SetMusicTime, 500);
+
+                ProgressBar.max=MusicPlayer.duration; //設置進度條的最大值為音樂的總時長
 
                 console.log(MusicPlayer.title);
             } else {
@@ -204,7 +211,9 @@
             //MusicTime.innerHTML="ASDASD";
 
             MusicTime.innerHTML = GetTimeFormat(MusicPlayer.currentTime) + "/" + GetTimeFormat(MusicPlayer.duration);
-            console.log(1);
+            //console.log(1);
+
+            ProgressBar.value = MusicPlayer.currentTime; //更新進度條的值
         }
 
         function GetTimeFormat(t) {
