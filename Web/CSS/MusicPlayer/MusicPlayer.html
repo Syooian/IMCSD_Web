@@ -73,28 +73,49 @@
         #PlayingInfo>text {
             text-align: center;
         }
+
+        #MusicList {
+            width: 100%;
+            font-size: 16pt;
+            text-align: center;
+            background-color: rgb(217, 233, 228);
+            font-weight: 900;
+        }
     </style>
 </head>
 
 <body>
 
-    <audio controls id="MusicPlayer" title="MP">
-        <source src="../music/moon.mp3" title="Moon">
-        <source src="../music/airball.mp3" title="Airball">
-    </audio>
+    <audio src="../music/moon.mp3" title="Moon" controls id="MusicPlayer"></audio>
+    <hr>
+
+    
 
     <hr>
+
+    <select id="MusicList" onchange="ChangeMusic(0)" width="100%">
+        <option value="../music/moon.mp3" title="Moon">Moon</option>
+        <option value="../music/elysees.mp3" title="Elysees">Elysees</option>
+        <option value="../music/airball.mp3" title="Airball">Airball</option>
+        <option value="../music/nothing.mp3" title="Nothing">Nothing</option>
+        <option value="../music/rain.mp3" title="Rain">Rain</option>
+        <option value="../music/travel.mp3" title="Travel">Travel</option>
+    </select>
+
     <div id="Btns">
+
+        <hr>
+
         <span onclick="PlayPauseMusic()">4</span><!--播放/暫停-->
 
         <!--<span onclick="playMusic()">4</span>--><!--播放-->
         <!--<span onclick="pauseMusic()">;</span>--><!--暫停-->
 
         <span onclick="stopMusic()">&lt;</span>
-        <span onclick="LastMusic()">9</span><!--上一首-->
+        <span onclick="ChangeMusic(-1)">9</span><!--上一首-->
         <span onclick="MusicSeek(-5)">7</span><!--快退-->
         <span onclick="MusicSeek(5)">8</span><!--快進-->
-        <span onclick="NextMusic()">⏭</span><!--下一首-->
+        <span onclick="ChangeMusic(1)">⏭</span><!--下一首-->
 
         <span onclick="SetMute()">U</span><!--靜音-->
         <span onclick="SetLoop()">循環</span><!--循環-->
@@ -146,6 +167,11 @@
 
         var ProgressBarOnDrag = false; //是否正在拖動進度條
 
+        MusicPlayer.onended = () => {
+            console.log("音樂結束了");
+            
+        };
+
         //播放音樂
         // function playMusic() {
         //     MusicPlayer.play();
@@ -158,8 +184,12 @@
         let PlayPauseButton = document.getElementById("Btns").children[0];
         function PlayPauseMusic() {
             if (MusicPlayer.paused) {
+                console.log("播放");
+
                 //開始撥放
+                //console.log("A1 "+MusicList.innerHTML);
                 MusicPlayer.play();
+                //console.log("A2 "+MusicList.innerHTML);
                 PlayPauseButton.innerHTML = ";"; //更改按鈕顯示為暫停
 
                 setInterval(SetMusicTime, 500);
@@ -168,6 +198,8 @@
 
                 console.log(MusicPlayer.title);
             } else {
+                console.log("暫停");
+
                 //暫停
                 MusicPlayer.pause();
                 PlayPauseButton.innerHTML = "4"; //更改按鈕顯示為播放
@@ -175,6 +207,8 @@
         }
 
         function stopMusic() {
+            //console.log("StopMusic");
+
             MusicPlayer.pause();
             MusicPlayer.currentTime = 0; //將音樂播放時間歸零
             PlayPauseButton.innerHTML = "4"; //更改按鈕顯示為播放
@@ -251,6 +285,21 @@
             var Sec = parseInt(t.toFixed(0) % 60);
 
             return Min.toString().padStart(2, '0') + ":" + Sec.toString().padStart(2, '0');
+        }
+
+        function ChangeMusic(n) {
+            var Index = MusicList.selectedIndex;
+
+            if ((n == -1 && Index > 0) || n == 1 && Index < MusicList.length - 1) {
+                MusicPlayer.src = MusicList.children[Index + n].value; //更改音樂來源
+                MusicPlayer.title = MusicList.children[Index + n].innerText;
+
+                MusicList.children[Index + n].selected = true;
+                //console.log(event.target.children[a].innerText);
+            }
+            else {
+                console.log("MusicList到底");
+            }
         }
 
     </script>

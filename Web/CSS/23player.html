@@ -41,10 +41,11 @@
         #controlPanel span {
             border: 1px solid black;
             cursor: pointer;
-            font-size: 3rem;
+            font-size: 4rem;
             box-shadow: 3px 3px 7px black;
             padding: 3px;
             font-family: webdings;
+            margin: 2px;
         }
 
         #volumeControl>input[type="text"] {
@@ -131,7 +132,7 @@
 
         #musicList {
             width: 100%;
-            font-size: 16pt;
+            font-size: 1.5rem;
             text-align: center;
             background-color: rgb(217, 233, 228);
             font-weight: 900;
@@ -144,7 +145,7 @@
     <audio src="music/moon.mp3" title="五月天-私奔到月球" controls id="myMusic"></audio>
     <hr>
     <div id="controlPanel">
-        <select id="musicList">
+        <select id="musicList" onchange="changeMusic(0)">
             <option value="music/moon.mp3">五月天-私奔到月球</option>
             <option value="music/airball.mp3">周杰倫-告白汽球</option>
             <option value="music/elysees.mp3">Elysees</option>
@@ -157,16 +158,21 @@
             <span onclick="playMusic()">4</span>
             <!--  <span onclick="pauseMusic()">;</span> -->
             <span onclick="stopMusic()">&lt;</span>
+            <span onclick="changeMusic(-1)">9</span>
             <span onclick="changeTime(-5)">7</span>
             <span onclick="changeTime(5)">8</span>
+            <span onclick="changeMusic(1)">:</span>
             <span onclick="setMute()">U</span>
+            <span onclick="">q</span>
+            <span onclick="">s</span>
+            <span onclick="">`</span>
         </div>
         <hr>
         <div id="volumeControl">
             <input type="range" oninput="setVolumeByRangeBar()" value="70">
             <button onclick="changeVolume(-1)">-</button>
             <button onclick="changeVolume(1)">+</button>
-            <input type="text" value="100" readonly>
+            <input type="text" value="100">
         </div>
         <hr>
         <input type="range" id="progressBar" min="0" value="0" oninput="setProgress()">
@@ -184,13 +190,34 @@
         var volumeControl = document.getElementById("volumeControl");
         var information = document.getElementById("information");
         var progressBar = document.getElementById("progressBar");
+        var musicList = document.getElementById("musicList");
+        var functionButtons = document.getElementById("functionButtons");
 
         var txtVolume = volumeControl.children[3];
         var rangeVolume = volumeControl.children[0];
 
         var musicDuration = information.children[0];
         var playStatus = information.children[1];
+        var btnPlay = functionButtons.children[0];
 
+
+
+        function changeMusic(n) {
+
+            var i = musicList.selectedIndex; //選擇的音樂索引
+            myMusic.src = musicList.children[i + n].value; //更改音樂來源
+            myMusic.title = musicList.children[i + n].innerText;
+            musicList.children[i + n].selected = true; //選擇的音樂索引
+
+
+            console.log(btnPlay.innerText);
+
+            if (btnPlay.innerText == ";") {
+                myMusic.onloadeddata = playMusic; //等歌曲載入完畢後再播放音樂
+            }
+
+
+        }
 
 
 
@@ -217,7 +244,7 @@
             musicDuration.innerHTML = getTimeFormat(myMusic.currentTime) + " / " + getTimeFormat(myMusic.duration);
 
             progressBar.value = myMusic.currentTime * 10000; //更新進度條的值
-            console.log(progressBar.value);
+            //console.log(progressBar.value);
 
             var w = myMusic.currentTime / myMusic.duration * 100; //計算進度條的百分比
             progressBar.style.backgroundImage = `linear-gradient(to right, rgb(197, 7, 0) ${w}%,rgb(236,235,234) ${w}%)`;
