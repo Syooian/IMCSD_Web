@@ -12,7 +12,16 @@
             --vol-thumb-height: 25px;
             --vol-thumb-background-color: black;
             --vol-thumb-border-radius: 5px;
-            --vol-thumb-border: 3px solid white
+            --vol-thumb-border: 3px solid white;
+
+            --progress-appearance: none;
+            --progress-width: 5px;
+            --progress-height: 5px;
+            --progress-background-color: rgb(197, 7, 0);
+            --progress-border-radius: 50%;
+            --progress-transition: 0.5s;
+            --progress-hover-width: 15px;
+            --progress-hover-height: 15px;
         }
 
 
@@ -86,6 +95,42 @@
         #information>div {
             text-align: center;
         }
+
+        #progressBar {
+            appearance: none;
+            width: 100%;
+            height: 5px;
+            background-color: rgb(236, 236, 234);
+            margin-bottom: 20px;
+        }
+
+        #progressBar::-webkit-slider-thumb {
+            appearance: var(--progress-appearance);
+            background-color: var(--progress-background-color);
+            width: var(--progress-width);
+            height: var(--progress-height);
+        }
+
+        #progressBar::-webkit-slider-thumb:hover {
+            width: var(--progress-hover-width);
+            height: var(--progress-hover-height);
+            border-radius: var(--progress-border-radius);
+            transition: var(--progress-transition);
+        }
+
+        #progressBar::-moz-range-thumb {
+            appearance: var(--progress-appearance);
+            background-color: var(--progress-background-color);
+            width: var(--progress-width);
+            height: var(--progress-height);
+        }
+
+        #progressBar::-moz-range-thumb:hover {
+            width: var(--progress-hover-width);
+            height: var(--progress-hover-height);
+            border-radius: var(--progress-border-radius);
+            transition: var(--progress-transition);
+        }
     </style>
 </head>
 
@@ -110,6 +155,8 @@
             <input type="text" value="100" readonly>
         </div>
         <hr>
+        <input type="range" id="progressBar" min="0" value="0">
+        <hr>
         <div id="information">
             <div>00:00 / 00:00</div>
             <div>歡迎使用我的播放器</div>
@@ -122,12 +169,16 @@
         var myMusic = document.getElementById("myMusic");
         var volumeControl = document.getElementById("volumeControl");
         var information = document.getElementById("information");
+        var progressBar = document.getElementById("progressBar");
 
         var txtVolume = volumeControl.children[3];
         var rangeVolume = volumeControl.children[0];
 
         var musicDuration = information.children[0];
         var playStatus = information.children[1];
+
+
+
 
         //時間格式
         function getTimeFormat(t) {
@@ -144,8 +195,19 @@
         //音樂播放時間
         function setMusicDuration() {
             musicDuration.innerHTML = getTimeFormat(myMusic.currentTime) + " / " + getTimeFormat(myMusic.duration);
+
+            progressBar.value = myMusic.currentTime * 10000; //更新進度條的值
+            console.log(progressBar.value);
+
+            var w = myMusic.currentTime / myMusic.duration * 100; //計算進度條的百分比
+            progressBar.style.backgroundImage = `linear-gradient(to right, rgb(197, 7, 0) ${w}%,rgb(236,235,234) ${w}%)`;
+
         }
 
+        function ProgressInitial(){
+            progressBar.max = myMusic.duration*10000; //音樂的總長度
+            setInterval(setMusicDuration, 10); //每秒更新一次音樂時間
+        }
 
         setVolumeByRangeBar(); //初始化音量
 
@@ -189,6 +251,11 @@
             myMusic.currentTime += 5;
         } */
 
+        function updateInfo(txt){
+            playStatus.innerHTML = text;
+        }
+
+
         //播放音樂
         function playMusic() {
             //console.log(event.target);
@@ -196,9 +263,9 @@
             event.target.innerHTML = ";";
             event.target.onclick = pauseMusic;
 
-            setInterval(setMusicDuration, 1000); //每秒更新一次音樂時間
-            playStatus.innerHTML = "目前播放"+myMusic.title+"...";
-
+            ProgressInitial(); //音樂開始播放時,才開始更新進度條的值
+            //playStatus.innerHTML = "目前播放" + myMusic.title + "...";
+            updateInfo("目前播放" + myMusic.title + "...")
         }
 
         //暫停音樂
@@ -206,7 +273,8 @@
             myMusic.pause();
             event.target.innerHTML = "4";
             event.target.onclick = playMusic;
-            playStatus.innerHTML = "音樂暫停...";
+            //playStatus.innerHTML = "音樂暫停...";
+            updateInfo("音樂暫停...")
         }
 
         //音樂停止
@@ -216,7 +284,8 @@
             myMusic.currentTime = 0;
             event.target.previousElementSibling.innerHTML = "4";
             event.target.previousElementSibling.onclick = playMusic; //恢復播放音樂的功能
-            playStatus.innerHTML = "音樂停止...";
+            //playStatus.innerHTML = "音樂停止...";
+            updateInfo("音樂停止...")
         }
 
     </script>
