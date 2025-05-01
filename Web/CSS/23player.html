@@ -91,7 +91,7 @@
 
 <body>
 
-    <audio src="music/moon.mp3" controls id="myMusic"></audio>
+    <audio src="music/moon.mp3" title="五月天-私奔到月球" controls id="myMusic"></audio>
     <hr>
     <div id="controlPanel">
         <div id="functionButtons">
@@ -127,6 +127,7 @@
         var rangeVolume = volumeControl.children[0];
 
         var musicDuration = information.children[0];
+        var playStatus = information.children[1];
 
         //時間格式
         function getTimeFormat(t) {
@@ -196,7 +197,7 @@
             event.target.onclick = pauseMusic;
 
             setInterval(setMusicDuration, 1000); //每秒更新一次音樂時間
-
+            playStatus.innerHTML = "目前播放"+myMusic.title+"...";
 
         }
 
@@ -205,6 +206,7 @@
             myMusic.pause();
             event.target.innerHTML = "4";
             event.target.onclick = playMusic;
+            playStatus.innerHTML = "音樂暫停...";
         }
 
         //音樂停止
@@ -213,6 +215,8 @@
             myMusic.pause();
             myMusic.currentTime = 0;
             event.target.previousElementSibling.innerHTML = "4";
+            event.target.previousElementSibling.onclick = playMusic; //恢復播放音樂的功能
+            playStatus.innerHTML = "音樂停止...";
         }
 
     </script>

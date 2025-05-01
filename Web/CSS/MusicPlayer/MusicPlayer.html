@@ -78,9 +78,9 @@
 
 <body>
 
-    <audio controls id="MusicPlayer">
-        <source src="../music/moon.mp3">
-        <source src="../music/airball.mp3">
+    <audio controls id="MusicPlayer" title="MP">
+        <source src="../music/moon.mp3" title="Moon">
+        <source src="../music/airball.mp3" title="Airball">
     </audio>
 
     <hr>
@@ -132,11 +132,15 @@
         let PlayPauseButton = document.getElementById("Btns").children[0];
         function PlayPauseMusic() {
             if (MusicPlayer.paused) {
+                //開始撥放
                 MusicPlayer.play();
                 PlayPauseButton.innerHTML = ";"; //更改按鈕顯示為暫停
 
                 setInterval(SetMusicTime, 500);
+
+                console.log(MusicPlayer.title);
             } else {
+                //暫停
                 MusicPlayer.pause();
                 PlayPauseButton.innerHTML = "4"; //更改按鈕顯示為播放
             }
@@ -149,13 +153,13 @@
         }
 
         function LastMusic() {
-            MusicPlayer.lastMusic();
+            MusicPlayer.LastMusic();
         }
         function MusicSeek(Time) {
             MusicPlayer.currentTime += Time;
         }
         function NextMusic() {
-            MusicPlayer.nextMusic();
+            MusicPlayer.NextMusic();
         }
 
         //靜音
@@ -200,6 +204,7 @@
             //MusicTime.innerHTML="ASDASD";
 
             MusicTime.innerHTML = GetTimeFormat(MusicPlayer.currentTime) + "/" + GetTimeFormat(MusicPlayer.duration);
+            console.log(1);
         }
 
         function GetTimeFormat(t) {
