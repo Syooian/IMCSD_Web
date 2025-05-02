@@ -17,16 +17,16 @@
             --VolThumb_Border: 3px solid black;
         }
 
-        .Muted {
-            background-color: pink;
-        }
-
-        #Btns {
+        #Main {
             border: 5px solid black;
             border-radius: 10px;
             padding: 20px;
             width: 800px;
             margin: auto;
+        }
+
+        .Muted {
+            background-color: pink;
         }
 
         #Btns span {
@@ -89,38 +89,37 @@
     <audio src="../music/moon.mp3" title="Moon" controls id="MusicPlayer"></audio>
     <hr>
 
-    
-
-    <hr>
-
-    <select id="MusicList" onchange="ChangeMusic(0)" width="100%">
-        <option value="../music/moon.mp3" title="Moon">Moon</option>
-        <option value="../music/elysees.mp3" title="Elysees">Elysees</option>
-        <option value="../music/airball.mp3" title="Airball">Airball</option>
-        <option value="../music/nothing.mp3" title="Nothing">Nothing</option>
-        <option value="../music/rain.mp3" title="Rain">Rain</option>
-        <option value="../music/travel.mp3" title="Travel">Travel</option>
-    </select>
-
-    <div id="Btns">
-
+    <div id="Main">
+        <!--音樂選單-->
+        <select id="MusicList" onchange="ChangeMusic(0)" width="100%">
+            <option value="../music/moon.mp3" title="Moon">Moon</option>
+            <option value="../music/elysees.mp3" title="Elysees">Elysees</option>
+            <option value="../music/airball.mp3" title="Airball">Airball</option>
+            <option value="../music/nothing.mp3" title="Nothing">Nothing</option>
+            <option value="../music/rain.mp3" title="Rain">Rain</option>
+            <option value="../music/travel.mp3" title="Travel">Travel</option>
+        </select>
+        <!--音樂選單-->
         <hr>
+        <!--播放控制按鈕-->
+        <div id="Btns">
+            <span onclick="PlayPauseMusic()">4</span><!--播放/暫停-->
 
-        <span onclick="PlayPauseMusic()">4</span><!--播放/暫停-->
+            <!--<span onclick="playMusic()">4</span>--><!--播放-->
+            <!--<span onclick="pauseMusic()">;</span>--><!--暫停-->
 
-        <!--<span onclick="playMusic()">4</span>--><!--播放-->
-        <!--<span onclick="pauseMusic()">;</span>--><!--暫停-->
+            <span onclick="stopMusic()">&lt;</span>
+            <span onclick="ChangeMusic(-1)">9</span><!--上一首-->
+            <span onclick="MusicSeek(-5)">7</span><!--快退-->
+            <span onclick="MusicSeek(5)">8</span><!--快進-->
+            <span onclick="ChangeMusic(1)">⏭</span><!--下一首-->
 
-        <span onclick="stopMusic()">&lt;</span>
-        <span onclick="ChangeMusic(-1)">9</span><!--上一首-->
-        <span onclick="MusicSeek(-5)">7</span><!--快退-->
-        <span onclick="MusicSeek(5)">8</span><!--快進-->
-        <span onclick="ChangeMusic(1)">⏭</span><!--下一首-->
-
-        <span onclick="SetMute()">U</span><!--靜音-->
-        <span onclick="SetLoop()">循環</span><!--循環-->
+            <span onclick="SetMute()">U</span><!--靜音-->
+            <span onclick="SetLoop()">循環</span><!--循環-->
+        </div>
+        <!--播放控制按鈕-->
         <hr>
-
+        <!--音量控制-->
         <div id="VolumeControl">
             <!--音量拉條-->
             <input type="range" id="Volume" min="0" max="100" value="100" oninput="VolumeChange(this.value)">
@@ -129,16 +128,17 @@
                             color: yellow;
                             text-align: center;">
         </div>
-
+        <!--音量控制-->
         <hr>
         <!--進度條-->
         <input type="range" id="ProgressBar" min="0" max="100" value="0">
+        <!--進度條-->
         <hr>
-
+        <!--播放資訊顯示-->
         <div id="PlayingInfo">
             <div id="MusicTime">--:--/--:--</div>
         </div>
-
+        <!--播放資訊顯示-->
     </div>
 
     <script>
@@ -169,7 +169,7 @@
 
         MusicPlayer.onended = () => {
             console.log("音樂結束了");
-            
+
         };
 
         //播放音樂
