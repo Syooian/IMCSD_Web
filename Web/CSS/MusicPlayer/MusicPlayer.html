@@ -103,12 +103,12 @@
         <hr>
         <!--播放控制按鈕-->
         <div id="Btns">
-            <span onclick="PlayPauseMusic()">4</span><!--播放/暫停-->
+            <span onclick="PlayMusic()">4</span><!--播放/暫停-->
 
             <!--<span onclick="playMusic()">4</span>--><!--播放-->
             <!--<span onclick="pauseMusic()">;</span>--><!--暫停-->
 
-            <span onclick="stopMusic()">&lt;</span>
+            <span onclick="StopMusic()">&lt;</span>
             <span onclick="ChangeMusic(-1)">9</span><!--上一首-->
             <span onclick="MusicSeek(-5)">7</span><!--快退-->
             <span onclick="MusicSeek(5)">8</span><!--快進-->
@@ -137,6 +137,7 @@
         <!--播放資訊顯示-->
         <div id="PlayingInfo">
             <div id="MusicTime">--:--/--:--</div>
+            <div id="InfoText">歡迎使用撥放器</div>
         </div>
         <!--播放資訊顯示-->
     </div>
@@ -168,7 +169,7 @@
         var ProgressBarOnDrag = false; //是否正在拖動進度條
 
         MusicPlayer.onended = () => {
-            console.log("音樂結束了");
+            console.log("音樂播放結束");
 
         };
 
@@ -192,26 +193,17 @@
                 //console.log("A2 "+MusicList.innerHTML);
                 PlayPauseButton.innerHTML = ";"; //更改按鈕顯示為暫停
 
-                setInterval(SetMusicTime, 500);
-
-                ProgressBar.max = MusicPlayer.duration; //設置進度條的最大值為音樂的總時長
+                ProgressInit();
 
                 console.log(MusicPlayer.title);
             } else {
                 console.log("暫停");
 
                 //暫停
-                MusicPlayer.pause();
-                PlayPauseButton.innerHTML = "4"; //更改按鈕顯示為播放
+                // MusicPlayer.pause();
+                // PlayPauseButton.innerHTML = "4"; //更改按鈕顯示為播放
+                PauseMusic();
             }
-        }
-
-        function stopMusic() {
-            //console.log("StopMusic");
-
-            MusicPlayer.pause();
-            MusicPlayer.currentTime = 0; //將音樂播放時間歸零
-            PlayPauseButton.innerHTML = "4"; //更改按鈕顯示為播放
         }
 
         function LastMusic() {
@@ -262,6 +254,7 @@
         var PlayingInfo = document.getElementById("PlayingInfo");
 
         var MusicTime = PlayingInfo.children[0];
+        var InfoText = PlayingInfo.children[1];
         function SetMusicTime() {
             //MusicTime.innerHTML="ASDASD";
 
@@ -289,17 +282,80 @@
 
         function ChangeMusic(n) {
             var Index = MusicList.selectedIndex;
+            MusicPlayer.src = MusicList.children[Index + n].value;
+            MusicPlayer.title = MusicList.children[Index + n].innerHTML;
+            MusicList.children[Index + n].selected = true;
 
-            if ((n == -1 && Index > 0) || n == 1 && Index < MusicList.length - 1) {
-                MusicPlayer.src = MusicList.children[Index + n].value; //更改音樂來源
-                MusicPlayer.title = MusicList.children[Index + n].innerText;
+            console.log("ChangeMusic : " + MusicPlayer.title);
 
-                MusicList.children[Index + n].selected = true;
-                //console.log(event.target.children[a].innerText);
+            if (PlayPauseButton.innerText == ";") {
+                MusicPlayer.onloadeddata = PlayMusic; //等歌曲載入完畢後再播放音樂
             }
-            else {
-                console.log("MusicList到底");
-            }
+
+            // var Index = MusicList.selectedIndex;
+
+            // if ((n == -1 && Index > 0) || n == 1 && Index < MusicList.length - 1) {
+            //     MusicPlayer.src = MusicList.children[Index + n].value; //更改音樂來源
+            //     MusicPlayer.title = MusicList.children[Index + n].innerText;
+
+            //     MusicList.children[Index + n].selected = true;
+            //     //console.log(event.target.children[a].innerText);
+
+
+            //     console.log("Play " + MusicList.children[Index + n].innerText);
+
+            //     if (btnPlay.innerText == ";") {
+            //         MusicPlayer.onloadeddata = PlayMusic; //等歌曲載入完畢後再播放音樂
+            //     }
+            // }
+            // else {
+            //     console.log("MusicList到底");
+            // }
+        }
+
+
+        function PlayMusic() {
+            MusicPlayer.play();
+            event.target.innerHTML = ";";
+            event.target.onclick = PauseMusic;
+
+            ProgressInit();//初始化進度條
+
+            UpdateInfo("目前播放 : " + MusicPlayer.title);
+        }
+        function PauseMusic() {
+            MusicPlayer.pause();
+            event.target.innerHTML = "4";
+            event.target.onclick = PlayMusic;
+            //playStatus.innerHTML = "音樂暫停...";
+            UpdateInfo("音樂暫停");
+        }
+        function StopMusic() {
+            //console.log("StopMusic");
+
+            MusicPlayer.pause();
+            MusicPlayer.currentTime = 0; //將音樂播放時間歸零
+            event.target.previousElementSibling.innerHTML = "4"; //更改按鈕顯示為播放
+            event.target.previousElementSibling.onclick=PlayMusic;
+
+            UpdateInfo("音樂停止");
+        }
+
+        //更新播放資訊
+        function UpdateInfo(Msg) {
+            console.log("UpdateInfo : " + Msg);
+
+            InfoText.innerHTML = Msg;
+        }
+
+
+        //進度條初始化
+        function ProgressInit() {
+            setInterval(SetMusicTime, 500);
+            ProgressBar.max = MusicPlayer.duration; //設置進度條的最大值為音樂的總時長
+        }
+        function ProgressUpdate() {
+
         }
 
     </script>
