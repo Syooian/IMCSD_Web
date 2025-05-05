@@ -15,6 +15,16 @@
             --VolThumb_Width: 25px;
             --VolThumb_BorderRadius: 5px;
             --VolThumb_Border: 3px solid black;
+
+            /*進度條*/
+            --progress-appearance: none;
+            --progress-width: 5px;
+            --progress-height: 5px;
+            --progress-background-color: rgb(197, 7, 0);
+            --progress-border-radius: 50%;
+            --progress-transition: 0.5s;
+            --progress-hover-width: 15px;
+            --progress-hover-height: 15px;
         }
 
         #Main {
@@ -29,13 +39,16 @@
             background-color: pink;
         }
 
+    
         #Btns span {
             border: 1px solid black;
             cursor: pointer;
-            font-size: 1.5rem;
+            font-size: 2rem;
             box-shadow: 3px 3px 7px black;
             padding: 3px;
             font-family: webdings;
+            margin: 2px;
+
         }
 
         /*音量拉條*/
@@ -45,7 +58,7 @@
             border-radius: 10px;
             /*background-color: bisque;*/
             background-image: linear-gradient(to right, #f06, #4a90e2);
-            width: 80%;
+            width: 700px;
             height: 30px;
             margin: auto;
         }
@@ -81,6 +94,45 @@
             background-color: rgb(217, 233, 228);
             font-weight: 900;
         }
+
+        /*進度條*/
+        #ProgressBar {
+            appearance: none;
+            width: 100%;
+            height: 5px;
+            background-color: rgb(236, 236, 234);
+            margin-bottom: 20px;
+        }
+
+        #ProgressBar::-webkit-slider-thumb {
+            appearance: var(--progress-appearance);
+            background-color: var(--progress-background-color);
+            width: var(--progress-width);
+            height: var(--progress-height);
+        }
+
+        #ProgressBar::-webkit-slider-thumb:hover {
+            width: var(--progress-hover-width);
+            height: var(--progress-hover-height);
+            border-radius: var(--progress-border-radius);
+            transition: var(--progress-transition);
+        }
+
+        #ProgressBar::-moz-range-thumb {
+            appearance: var(--progress-appearance);
+            background-color: var(--progress-background-color);
+            width: var(--progress-width);
+            height: var(--progress-height);
+        }
+
+        #ProgressBar::-moz-range-thumb:hover {
+            width: var(--progress-hover-width);
+            height: var(--progress-hover-height);
+            border-radius: var(--progress-border-radius);
+            transition: var(--progress-transition);
+        }
+        /*進度條*/
+
     </style>
 </head>
 
@@ -115,7 +167,9 @@
             <span onclick="ChangeMusic(1)">⏭</span><!--下一首-->
 
             <span onclick="SetMute()">U</span><!--靜音-->
-            <span onclick="SetLoop()">循環</span><!--循環-->
+            <span onclick="">q</span>
+            <span onclick="">s</span>
+            <span onclick="">`</span>
         </div>
         <!--播放控制按鈕-->
         <hr>
@@ -233,7 +287,7 @@
         }
         //循環
         function SetLoop() {
-            MusicPlayer.SetLoop();
+            //MusicPlayer.SetLoop();
         }
 
         //--------------------------------------------------音量
@@ -266,7 +320,8 @@
                 ProgressBar.value = MusicPlayer.currentTime; //更新進度條的值
 
                 //進度條填色
-                var W = MusicPlayer.duration / MusicPlayer.currentTime * 100;
+                var W = MusicPlayer.currentTime / MusicPlayer.duration * 100;
+                //console.log(MusicPlayer.duration + ", " + MusicPlayer.currentTime + ", Percent : " + W);
                 ProgressBar.style.backgroundImage = `linear-gradient(to right, #f06 ${W}%, #4a90e2 ${W}%)`;
             }
         }
@@ -336,7 +391,7 @@
             MusicPlayer.pause();
             MusicPlayer.currentTime = 0; //將音樂播放時間歸零
             event.target.previousElementSibling.innerHTML = "4"; //更改按鈕顯示為播放
-            event.target.previousElementSibling.onclick=PlayMusic;
+            event.target.previousElementSibling.onclick = PlayMusic;
 
             UpdateInfo("音樂停止");
         }
