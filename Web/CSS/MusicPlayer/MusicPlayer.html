@@ -33,13 +33,18 @@
             padding: 20px;
             width: 800px;
             margin: auto;
+            text-align: center;
         }
 
+        /*靜音按鈕(靜音時)*/
         .Muted {
+            /*背景顏色*/
             background-color: pink;
+            /*刪除線*/
+            text-decoration: line-through;
         }
 
-    
+        /*播放控制按鈕*/
         #Btns span {
             border: 1px solid black;
             cursor: pointer;
@@ -83,10 +88,12 @@
             border: var(--VolThumb_Border);
         }
 
+        /*播放資訊*/
         #PlayingInfo>text {
             text-align: center;
         }
 
+        /*音樂選單*/
         #MusicList {
             width: 100%;
             font-size: 16pt;
@@ -95,7 +102,7 @@
             font-weight: 900;
         }
 
-        /*進度條*/
+        /*======================進度條======================*/
         #ProgressBar {
             appearance: none;
             width: 100%;
@@ -131,8 +138,8 @@
             border-radius: var(--progress-border-radius);
             transition: var(--progress-transition);
         }
-        /*進度條*/
 
+        /*======================進度條======================*/
     </style>
 </head>
 
