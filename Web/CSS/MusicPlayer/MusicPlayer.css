@@ -1,0 +1,134 @@
+/*全局變數*/
+:root {
+    /*音量拉條上的點*/
+    --VolThumb_Appearance: none;
+    --VolThumb_BackgroundColor: aqua;
+    --VolThumb_Height: 40px;
+    --VolThumb_Width: 25px;
+    --VolThumb_BorderRadius: 5px;
+    --VolThumb_Border: 3px solid black;
+
+    /*進度條*/
+    --progress-appearance: none;
+    --progress-width: 5px;
+    --progress-height: 5px;
+    --progress-background-color: rgb(197, 7, 0);
+    --progress-border-radius: 50%;
+    --progress-transition: 0.5s;
+    --progress-hover-width: 15px;
+    --progress-hover-height: 15px;
+}
+
+#Main {
+    border: 5px solid black;
+    border-radius: 10px;
+    padding: 20px;
+    width: 800px;
+    margin: auto;
+    text-align: center;
+}
+
+/*靜音按鈕(靜音時)*/
+.Muted {
+    /*背景顏色*/
+    background-color: pink;
+    /*刪除線*/
+    text-decoration: line-through;
+}
+
+/*播放控制按鈕*/
+#Btns span {
+    border: 1px solid black;
+    cursor: pointer;
+    font-size: 2rem;
+    box-shadow: 3px 3px 7px black;
+    padding: 3px;
+    font-family: webdings;
+    margin: 2px;
+
+}
+
+/*音量拉條*/
+#VolumeControl>input[type="range"] {
+    appearance: none;
+    border: 1px solid black;
+    border-radius: 10px;
+    /*background-color: bisque;*/
+    background-image: linear-gradient(to right, #f06, #4a90e2);
+    width: 700px;
+    height: 30px;
+    margin: auto;
+}
+
+/*音量拉條上的點*/
+#VolumeControl>input[type="range"]::-webkit-slider-thumb {
+    appearance: var(--VolThumb_Appearance);
+    background-color: var(--VolThumb_BackgroundColor);
+    height: var(--VolThumb_Height);
+    width: var(--VolThumb_Width);
+    border-radius: var(--VolThumb_BorderRadius);
+    border: var(--VolThumb_Border);
+}
+
+/*音量拉條上的點 (對火狐用)*/
+#VolumeControl>input[type="range"]::-moz-range-thumb {
+    appearance: var(--VolThumb_Appearance);
+    background-color: var(--VolThumb_BackgroundColor);
+    height: var(--VolThumb_Height);
+    width: var(--VolThumb_Width);
+    border-radius: var(--VolThumb_BorderRadius);
+    border: var(--VolThumb_Border);
+}
+
+/*播放資訊*/
+#PlayingInfo>text {
+    text-align: center;
+}
+
+/*音樂選單*/
+#MusicList {
+    width: 100%;
+    font-size: 16pt;
+    text-align: center;
+    background-color: rgb(217, 233, 228);
+    font-weight: 900;
+}
+
+/*======================進度條======================*/
+#ProgressBar {
+    appearance: none;
+    width: 100%;
+    height: 5px;
+    background-color: rgb(236, 236, 234);
+    margin-bottom: 20px;
+}
+
+#ProgressBar::-webkit-slider-thumb {
+    appearance: var(--progress-appearance);
+    background-color: var(--progress-background-color);
+    width: var(--progress-width);
+    height: var(--progress-height);
+}
+
+#ProgressBar::-webkit-slider-thumb:hover {
+    width: var(--progress-hover-width);
+    height: var(--progress-hover-height);
+    border-radius: var(--progress-border-radius);
+    transition: var(--progress-transition);
+}
+
+#ProgressBar::-moz-range-thumb {
+    appearance: var(--progress-appearance);
+    background-color: var(--progress-background-color);
+    width: var(--progress-width);
+    height: var(--progress-height);
+}
+
+#ProgressBar::-moz-range-thumb:hover {
+    width: var(--progress-hover-width);
+    height: var(--progress-hover-height);
+    border-radius: var(--progress-border-radius);
+    transition: var(--progress-transition);
+}
+
+/*======================進度條======================*/
