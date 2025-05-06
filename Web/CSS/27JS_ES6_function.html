@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        let t = function () {
+            console.log(111);
+
+
+        }
+        //setInterval(t, 1000);
+
+        ///////////////////////////////////
+
+
+        /*  setInterval( () => {
+             console.log(111);
+         }, 1000); */
+
+
+        /* function plus(a = 1, b = 2) {
+            console.log(a + b);
+
+        }
+ */
+        /*   let plus = function (a = 1, b = 2) {
+              console.log(a + b);
+  
+          } */
+
+        let plus = (a = 1, b = 2) => {
+            console.log(a + b);
+
+        }
+
+        plus();
+        plus(3);
+        plus(3, 4);
+
+        /////////////////////////////////////
+
+        /* function welcome(name) {
+            console.log("Hello " + name);
+        }
+ */
+        /* let welcome=function (name) {
+            console.log("Hello " + name);
+        }
+ */
+
+        /*  let welcome =  (name) =>{
+             console.log("Hello " + name);
+         } */
+
+        /*  let welcome =  name =>{
+             console.log("Hello " + name);
+         } */
+
+        /*   let welcome =  name =>
+              console.log("Hello " + name); */
+
+
+        let welcome = name => console.log("Hello " + name);
+
+        welcome();
+        /////////////////////////////
+
+
+        let f = [2, 1, 3];
+        for (let item of f) {
+            console.log(item * item);
+
+        }
+
+        let g = f.map(i => i * i);
+
+        console.log(g);
+
+
+      
+
+    </script>
+</body>
+
+</html>

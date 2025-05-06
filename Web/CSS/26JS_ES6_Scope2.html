@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //變數的scope
+
+        var a = 5, b = 0;
+        let x = 2, y = 0;
+
+        function cal() {
+            var c = a + b;
+            let z = x + y;
+            console.log(c);
+            console.log(z);
+        }
+        cal();
+
+        //console.log(c);
+        //console.log(z);
+
+        /////////////////////////////////////////////////////////
+
+        var d = [];
+
+        for (let i = 0; i < 10; i++) {
+            d[i] = i;
+        }
+
+        console.log(d);
+
+        ////////////////////////////////////
+
+
+        var f = [];
+
+        for (let i = 0; i < 10; i++) {
+            f[i] = function () {
+                console.log(i);
+
+            }
+        }
+
+        f[2]();
+        /////////////////////////////////////////////////////////////////////
+
+        let w = function () {
+
+            console.log(123);
+
+        }
+        w();
+
+        ////////////////////////////////////////////
+
+        let q=[];
+        for (let i = 0; i < 10; i++) {
+            q[i] = function () {
+                console.log(i);
+
+            }
+        }
+        q[2]();
+        q[3]();
+        q[4]();
+        q[5]();
+
+
+
+
+        /////////////////////////////
+        test();
+        function test(){
+            console.log("abc");
+            
+        }
+        
+      
+        let test2 = function(){
+            console.log("abc2");
+            
+        }
+        test2();
+        
+    </script>
+</body>
+
+</html>
