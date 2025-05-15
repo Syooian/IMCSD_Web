@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <h1 id="timer"></h1>
+
+    <script>
+        let timer = document.getElementById("timer");
+
+
+        //let now = new Date();
+        /*   let a = new Date();
+          let b = new Date();
+          let c = new Date();
+          let d = new Date(); */
+
+        //timer.innerHTML = `${now.getHours()}:${now.getMinutes()}:${now.getSeconds()}`
+        /* 
+                let timeFormat = now => {
+                    let h = now.getHours() < 10 ? "0" + now.getHours() : now.getHours();
+                    let m = now.getMinutes() < 10 ? "0" + now.getMinutes() : now.getMinutes();
+                    let s = now.getSeconds() < 10 ? "0" + now.getSeconds() : now.getSeconds();
+        
+                    return `${h}:${m}:${s}`;
+        
+                }
+         */
+        //timer.innerHTML = timeFormat(now);
+
+        /*   setInterval(() => {
+              now = new Date();
+              timer.innerHTML = timeFormat(now);
+          }, 1000); */
+
+        //使用prototype增加一個方法
+
+        ///////////////////////////////////////////////////
+
+        
+
+        Date.prototype.timeFormat = myDate => {
+            let h = myDate.getHours() < 10 ? "0" + myDate.getHours() : myDate.getHours();
+            let m = myDate.getMinutes() < 10 ? "0" + myDate.getMinutes() : myDate.getMinutes();
+            let s = myDate.getSeconds() < 10 ? "0" + myDate.getSeconds() : myDate.getSeconds();
+
+            return `${h}:${m}:${s}`;
+
+        }
+
+        Date.prototype.dateFormat = myDate => {
+            let y = myDate.getFullYear() - 1911;
+            let m = myDate.getMonth()+1;
+            let d = myDate.getDate();
+
+
+            let week = ["日", "一", "二", "三", "四", "五", "六"];
+            let w = week[myDate.getDay()];
+
+            return `民國${y}年${m}月${d}日星期${w}`;
+        }
+
+       
+
+        setInterval(() => {
+            let myDate = new Date();
+           timer.innerHTML = myDate.dateFormat(myDate) + " " + myDate.timeFormat(myDate);
+        }, 1000);
+
+    </script>
+</body>
+
+</html>

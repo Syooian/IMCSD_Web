@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        // function GetTimeFormat(t) {
+        // //總秒數轉換為00:00格式文字
+
+        // var Min = parseInt(t.toFixed(0) / 60);
+        // var Sec = parseInt(t.toFixed(0) % 60);
+
+        // return Min.toString().padStart(2, '0') + ":" + Sec.toString().padStart(2, '0');
+        // }
+
+        var DT = new Date();
+
+        //console.log("DateTime : " + DT);
+
+        // console.log("Year : " + DT.getFullYear());
+        // console.log("Month : " + DT.getMonth());
+        // console.log("Day : " + DT.getDay());
+        // console.log("Hours : " + DT.getHours());
+        // console.log("Minutes : " + DT.getMinutes());
+        // console.log("Seconds : " + DT.getSeconds());
+
+        //console.log("GDT : " + GetDateTime(DT));
+
+        function GetDateTime(DateTime) {
+            // var Min = parseInt(t.toFixed(0) / 60);
+            // var Sec = parseInt(t.toFixed(0) % 60);
+
+            //console.log("GDT in : " + DateTime);
+
+            // console.log("Year : " + DateTime.getFullYear());
+            // console.log("Month : " + DateTime.getMonth());
+            // console.log("Day : " + DateTime.getDay());
+            // console.log("Hours : " + DateTime.getHours());
+            // console.log("Minutes : " + DateTime.getMinutes());
+            // console.log("Seconds : " + DateTime.getSeconds());
+
+            //console.log(DateTime.getDate());
+
+            var DateTimeStr = 
+                DateTime.getFullYear()+"-"+
+                (DateTime.getMonth()+1).toString().padStart(2, '0')+"-"+
+                DateTime.getDate().toString().padStart(2, '0')+" "+
+                DateTime.getHours().toString().padStart(2, '0')+":"+
+                DateTime.getMinutes().toString().padStart(2, '0')+":"+
+                DateTime.getSeconds().toString().padStart(2, '0');
+
+            //console.log("DateTimeStr : " + DateTimeStr);
+
+            // return
+            //     DateTime.getFullYear() + "-" +
+            //     (DateTime.getMonth()+1).toString().padStart(2, '0') + "-" +
+            //     DateTime.getDate().toString().padStart(2, '0') + " " +
+            //     DateTime.getHours().toString().padStart(2, '0') + ":" +
+            //     DateTime.getMinutes().toString().padStart(2, '0') + ":" +
+            //     DateTime.getSeconds().toString().padStart(2, '0');
+            return DateTimeStr;
+
+            //Min.toString().padStart(2, '0') + ":" + Sec.toString().padStart(2, '0');
+        }
+
+        // 寫法1
+        // Date.prototype.gdt = function() {
+        //     return GetDateTime(this);
+        // }
+        // 寫法2
+        Date.prototype.gdt=dt=>GetDateTime(dt);
+
+        console.log("GDT : " + DT.gdt(DT));
+    </script>
+</body>
+
+</html>
