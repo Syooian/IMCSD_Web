@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1 id="result"></h1>
+    <h1 id="result2"></h1>
+    <script>
+        let a = Date();  //classless 沒有類別的物件形式
+
+        let Pen = function (color, cover, refill) {
+            //筆的屬性(特徵) property
+            //有顏色
+            this.color = color;   //紅色,藍色,綠色   
+            //有筆蓋
+            this.cover = cover; //普通的,特別的
+            //有筆芯
+            this.refill = refill;  //大,中,小
+
+            //筆的方法(功能) method
+            //會寫字
+            /* this.getWords = function()  {
+                return "哈囉世界!!";
+            } */
+
+            this.getWords = function (myWords) {
+                return myWords;
+            }
+
+
+            //會換筆心
+            this.changeRefill = function (myWords) {
+                return myWords;
+            }
+            //會畫圖
+            this.draw = function (myWords) {
+                return myWords;
+            }
+
+        }
+
+        let result = document.getElementById("result");
+        let result2 = document.getElementById("result2");
+
+        let myPen = new Pen("藍色", "特別的", "中");
+
+        /*   myPen.color = "green";
+          myPen.refill = "small";
+   */
+        result.innerHTML = myPen.color + "<br>" + myPen.cover + "<br>" + myPen.refill + "<br>" +
+            myPen.getWords("12345") + "<br>" + myPen.changeRefill("wwww") + "<br>" + myPen.draw("qqqq");
+
+
+        /*  let Jack = new Pen();
+         result2.innerHTML = Jack.color + "<br>" + Jack.cover + "<br>" + Jack.refill + "<br>" +
+             Jack.getWords() + "<br>" + Jack.changeRefill() + "<br>" + Jack.draw(); */
+
+        /////////////////////////////////////////////////////
+        //類別
+
+        class Pen2 {
+
+            #type; //私有欄位
+            #color; //私有欄位
+            #cover; //私有欄位  
+            #refill; //私有欄位
+            #a;
+
+
+
+            constructor(color, cover, refill, type, a) {
+                //fields(欄位)
+
+                this.#type = type; //私有欄位
+                //有顏色
+                this.#color = color;   //紅色,藍色,綠色   
+                //有筆蓋
+                this.#cover = cover; //普通的,特別的
+                //有筆芯
+                this.#refill = refill;  //大,中,小
+
+                this.#a = a; //私有欄位
+
+            }
+
+
+            //屬性封裝
+            get Type() {
+
+                this.#type = "你咬我啊";
+                return this.#type;
+            }
+
+            get A() {
+
+                if (this.#a < 0 || this.#a > 9 ){
+                    return "錯誤的數字";
+                }
+                return this.#a;
+            }
+
+            set Refill(val){
+                this.#refill = val;
+            }
+
+            get Refill(){
+                return this.#refill;
+            }
+
+            //透過方法
+            getColor(){
+                return this.#color;
+            }
+
+            setColor(myColor){
+                this.#color = myColor;
+            }
+
+        }
+
+        let myPen2 = new Pen2("紅色", "普通的", "大", "原子筆",8);
+        myPen2.Type = "圓珠筆"; //改變私有欄位的值
+        myPen2.setColor("綠色"); //改變私有欄位的值
+        myPen2.Refill = "小"; //改變私有欄位的值
+        result2.innerHTML =myPen2.A+"<br>"+ myPen2.Type + "<br>" + myPen2.getColor() + "<br>" + myPen2.cover + "<br>" +
+            myPen2.Refill;
+    </script>
+
+</body>
+
+</html>

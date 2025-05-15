@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let Car = function () {
+            this.Type = "Sedan";
+            this.Color = "Red";
+
+            this.StartEngine = function () {
+                console.log("Engine started");
+            }
+            this.StartEngine = function (SS) {
+                console.log("Engine started : " + SS);
+            }
+        }
+
+        var NewCar = new Car();
+
+        console.log(NewCar.Type);
+        console.log(NewCar.Color);
+        NewCar.StartEngine();//JavaScript無法多載
+        NewCar.StartEngine("A1");
+
+        NewCar.Color = "Black";
+
+        console.log(NewCar.Color);
+
+
+        class Car2 {
+
+            #Type;//#表示私有
+            Color;
+
+            constructor(Type, Color) {
+                //Field(欄位)
+                this.#Type = Type;
+                this.Color = Color;
+            }
+
+            //屬性封裝
+            get GetType(){
+                return this.#Type;
+            }
+        }
+
+        var NewCar2 = new Car2("PickUp", "Yellow");
+        console.log(NewCar2.GetType);
+        console.log(NewCar2.Color);
+
+    </script>
+</body>
+
+</html>
