@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //類別繼承的實作
+        //男生,女生=>人
+
+        class People {
+            #name;
+            #age;
+            #address;
+            #tel;
+            constructor(name, age, address, tel) {
+                this.#name = name;
+                this.#age = age;
+                this.#address = address;
+                this.#tel = tel;
+            }
+
+            //方法
+            Walk() {
+                return "走路";
+            }
+            Run() {
+                return "跑步";
+            }
+            Eat() {
+                return "吃東西";
+            }
+            Jump() {
+                return "跳";
+            }
+
+
+        }
+
+
+        class Male extends People {
+
+            constructor(name, age, address, tel) {
+                super(name, age, address, tel);
+
+            }
+
+            //專屬男生的方法
+            SleepAllDay() {
+                return "睡整天覺";
+            }
+
+        }
+
+        class Female extends People {
+
+            constructor(name, age, address, tel) {
+                super(name, age, address, tel);
+            }
+
+            //專屬女生的方法
+            Sleep() {
+                return "睡美容覺";
+            }
+
+        }
+
+        ///////////////////////////////////////////////////////////////
+
+        let jack = new Male("Jack", 18, "台北", "0912345678"); //物件
+        let John = new Male("John", 20, "台北", "0912345678"); //物件
+        let bob = new Male("Bob", 22, "台北", "0912345678"); //物件
+
+        jack.Run();
+        john.Run();
+        bob.SleepAllDay();
+
+
+        let mary = new Female("Mary", 18, "台北", "0912345678"); //物件
+        let may = Female("May", 18, "台北", "0912345678"); //
+        let natasha = Female("Natasha", 18, "台北", "0912345678"); //物件
+
+        may.Sleep();
+
+    </script>
+</body>
+
+</html>
