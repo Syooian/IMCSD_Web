@@ -31,33 +31,42 @@
     <div class="modal fade" id="LoginModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
-                <div class="modal-header">
-                    <h1>Login</h1>
+                <form class="needs-validation" novalidate method="post" action="login.php">
+                    <div class="modal-header">
+                        <h1>Login</h1>
 
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+
                         <div class="mb-3">
                             <label class="form-label" for="email"><span class="text-danger">*</span>E-mail</label>
-                            <input type="email" class="form-control" id="email" placeholder="YourEmail@email.com">
+                            <input type="email" required class="form-control" id="email"
+                                placeholder="YourEmail@email.com">
+                            <div class="invalid-feedback">
+                                需填寫符合格式的E-mail
+                            </div>
+
                         </div>
                         <div class="mb-3">
 
                             <label class="form-label" for="pwd"><span class="text-danger">*</span>Password</label>
-                            <input type="password" class="form-control" id="pwd">
-
+                            <input type="password" minlength="8" maxlength="20" required class="form-control" id="pwd">
+                            <div class="invalid-feedback">
+                                需填寫8~20碼的密碼
+                            </div>
                         </div>
                         <div class="mb-3 form-check form-switch">
                             <input type="checkbox" id="rememberme" class="form-check-input">
                             <label for="rememberme" class="form-check-label">Remember Me</label>
                         </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-success">Login</button>
-                </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-success">Login</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
@@ -253,6 +262,28 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO"
         crossorigin="anonymous"></script>
+
+    <script>
+        // Example starter JavaScript for disabling form submissions if there are invalid fields
+        (() => {
+            'use strict'
+
+            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            const forms = document.querySelectorAll('.needs-validation')
+
+            // Loop over them and prevent submission
+            Array.from(forms).forEach(form => {
+                form.addEventListener('submit', event => {
+                    if (!form.checkValidity()) {
+                        event.preventDefault()
+                        event.stopPropagation()
+                    }
+
+                    form.classList.add('was-validated')
+                }, false)
+            })
+        })()
+    </script>
 
 </body>
 
