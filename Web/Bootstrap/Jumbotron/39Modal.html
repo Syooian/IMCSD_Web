@@ -25,7 +25,17 @@
 </head>
 
 <body>
+   
 
+    <div class="offcanvas offcanvas-bottom" tabindex="-1" id="PrivayOffcanvas" aria-labelledby="offcanvasBottomLabel">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasBottomLabel">隱私權政策</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body small">
+            隱私權政策隱私權政策隱私權政策
+        </div>
+    </div>
 
     <!-- Modal -->
     <div class="modal fade" id="LoginModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -78,7 +88,7 @@
         <div class="text-end">
             <button class="btn btn-link" data-bs-toggle="modal" data-bs-target="#LoginModal">會員登入</button> |
             <button class="btn btn-link">聯絡我們</button> |
-            <button class="btn btn-link">隱私權政策</button>
+            <button class="btn btn-link" data-bs-toggle="offcanvas" data-bs-target="#PrivayOffcanvas">隱私權政策</button>
         </div>
         <div class="bg-secondary-subtle p-5 mt-3 rounded shadow jumbotron">
             <h1 class="fw-bold text-white textShadow">世界那麼大 我想去看看
