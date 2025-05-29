@@ -80,10 +80,27 @@
     border: var(--VolThumb_Border);
 }
 
-/*播放資訊*/
+/*======================播放資訊======================*/
+#PlayingInfo {
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+}
+#PlayingInfo>#Info{
+    flex: 0 1 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
+}
 #PlayingInfo>text {
     text-align: center;
 }
+#PlayingInfo>img{
+    height: 2rem;
+}
+/*======================播放資訊======================*/
 
 /*音樂選單*/
 #MusicList {
