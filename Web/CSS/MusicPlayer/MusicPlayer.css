@@ -48,6 +48,7 @@
 
 }
 
+/*======================音量拉條======================*/
 /*音量拉條*/
 #VolumeControl>input[type="range"] {
     appearance: none;
@@ -80,6 +81,15 @@
     border: var(--VolThumb_Border);
 }
 
+/*音量數值文字*/
+#VolumeControl>input[type=text] {
+    width: 30px;
+    background-color: black;
+    color: yellow;
+    text-align: center;
+}
+/*======================音量拉條======================*/
+
 /*======================播放資訊======================*/
 #PlayingInfo {
     display: flex;
@@ -87,19 +97,23 @@
     justify-content: center;
     align-items: center;
 }
-#PlayingInfo>#Info{
+
+#PlayingInfo>#Info {
     flex: 0 1 auto;
     display: flex;
     flex-direction: column;
     align-items: center;
     margin: 0 auto;
 }
+
 #PlayingInfo>text {
     text-align: center;
 }
-#PlayingInfo>img{
+
+#PlayingInfo>img {
     height: 2rem;
 }
+
 /*======================播放資訊======================*/
 
 /*音樂選單*/
