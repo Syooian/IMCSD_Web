@@ -67,15 +67,6 @@ MusicPlayer.onended = () => {
     ChangeMusic(1);
 };
 
-//播放音樂
-// function playMusic() {
-//     MusicPlayer.play();
-// }
-
-// function pauseMusic() {
-//     MusicPlayer.pause();
-// }
-
 let PlayPauseButton = document.getElementById("Btns").children[0];
 function IsPlaying() {
     return PlayPauseButton.innerHTML == ";" ? true : false;
@@ -110,10 +101,6 @@ function SetMute() {
         event.target.innerHTML = "V"; //添加靜音樣式
         event.target.className = "Muted";
     }
-}
-//循環
-function SetLoop() {
-    //MusicPlayer.SetLoop();
 }
 
 //--------------------------------------------------音量
@@ -152,18 +139,6 @@ function SetMusicTime() {
         ProgressBar.style.backgroundImage = `linear-gradient(to right, #f06 ${W}%, #4a90e2 ${W}%)`;
     }
 
-    //音樂播放結束
-    if (MusicPlayer.currentTime == MusicPlayer.duration) {
-
-
-        //最後一首
-        // if (MusicList.selectedIndex == MusicList.length - 1) {
-        //     StopMusic();
-        // }
-        // else {
-        //     ChangeMusic(1);//播放下一首
-        // }
-    }
 }
 
 function GetTimeFormat(t) {
@@ -198,16 +173,6 @@ function ChangeMusic(n) {
             {
                 //判斷第一首或最後一首
                 if ((n == -1 && Index > 0) || n == 1 && Index < MusicList.length - 1) {
-                    // MusicPlayer.src = MusicList.children[Index + n].value;
-                    // MusicPlayer.title = MusicList.children[Index + n].innerHTML;
-                    // MusicList.children[Index + n].selected = true;
-
-                    // console.log("ChangeMusic : " + MusicPlayer.title);
-
-                    // if (PlayPauseButton.innerText == ";") {
-                    //     MusicPlayer.onloadeddata = PlayMusic; //等歌曲載入完畢後再播放音樂
-                    // }
-
                     PlayIndex(Index + n); //播放音樂
                 }
                 else {
@@ -253,29 +218,6 @@ function ChangeMusic(n) {
             console.log("未播放中");
         }
     }
-
-
-
-
-    // var Index = MusicList.selectedIndex;
-
-    // if ((n == -1 && Index > 0) || n == 1 && Index < MusicList.length - 1) {
-    //     MusicPlayer.src = MusicList.children[Index + n].value; //更改音樂來源
-    //     MusicPlayer.title = MusicList.children[Index + n].innerText;
-
-    //     MusicList.children[Index + n].selected = true;
-    //     //console.log(event.target.children[a].innerText);
-
-
-    //     console.log("Play " + MusicList.children[Index + n].innerText);
-
-    //     if (btnPlay.innerText == ";") {
-    //         MusicPlayer.onloadeddata = PlayMusic; //等歌曲載入完畢後再播放音樂
-    //     }
-    // }
-    // else {
-    //     console.log("MusicList到底");
-    // }
 }
 
 
@@ -294,6 +236,8 @@ function PauseMusic() {
     PlayPauseButton.onclick = PlayMusic;
     //playStatus.innerHTML = "音樂暫停...";
     UpdateInfo("音樂暫停");
+
+    ProgressStop();
 }
 function StopMusic() {
     //console.log("StopMusic");
@@ -304,6 +248,8 @@ function StopMusic() {
     PlayPauseButton.onclick = PlayMusic;
 
     UpdateInfo("音樂停止");
+
+    ProgressStop();
 }
 
 //更新播放資訊
@@ -318,6 +264,17 @@ function UpdateInfo(Msg) {
 function ProgressInit() {
     setInterval(SetMusicTime, 10);
     ProgressBar.max = MusicPlayer.duration; //設置進度條的最大值為音樂的總時長
+}
+//停止進度條
+function ProgressStop(){
+    try
+    {
+        clearInterval(SetMusicTime);
+    }
+    catch
+    {
+
+    }
 }
 function ProgressUpdate() {
 
