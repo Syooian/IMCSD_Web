@@ -170,8 +170,12 @@ function ChangeMusic(n) {
     var Index = MusicList.selectedIndex;
 
     switch (LoopMode) {
-        case LoopModeEnum.None://不循環
         case LoopModeEnum.Single://單曲重複
+            {
+                PlayIndex(Index); //播放音樂
+                break;
+            }
+        case LoopModeEnum.None://不循環
         case LoopModeEnum.All://全部循環
             {
                 //判斷第一首或最後一首
