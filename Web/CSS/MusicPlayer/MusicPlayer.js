@@ -5,8 +5,9 @@ const LoopModeEnum = {
     All: 3//全部循環
 }
 
+//循環模式======================================================
 var LoopMode = LoopModeEnum.None;
-var LoopStatus = document.getElementById("LoopStatus");
+var LoopStatus = document.getElementById("LoopStatus");;
 
 function SetLoopMode() {
     if (LoopMode + 1 > LoopModeEnum.All) {
@@ -17,21 +18,23 @@ function SetLoopMode() {
     }
 
     //console.log("LoopMode : " + LoopMode);
+
+    LoopStatus.innerHTML = GetLoopModeStr();
+}
+
+function GetLoopModeStr() {
     switch (LoopMode) {
         case LoopModeEnum.None://不循環
-            LoopStatus.innerHTML = "不循環";
-            break;
+            return "不循環";
         case LoopModeEnum.Single://單曲重複
-            LoopStatus.innerHTML = "單曲重複";
-            break;
+            return "單曲重複";
         case LoopModeEnum.Random://隨機播放
-            LoopStatus.innerHTML = "隨機播放";
-            break;
+            return "隨機播放";
         case LoopModeEnum.All://全部循環
-            LoopStatus.innerHTML = "全部循環";
-            break;
+            return "全部循環";
     }
 }
+//循環模式======================================================
 
 //使用者觸發click事件,則播放音樂
 let MusicPlayer = document.getElementById("MusicPlayer");
@@ -128,10 +131,9 @@ function VolumeChange(Volume) {
 }
 VolumeChange(100);
 //---------------------------------------------------音量
-var PlayingInfo = document.getElementById("PlayingInfo");
 
-var MusicTime = PlayingInfo.children[0];
-var InfoText = PlayingInfo.children[1];
+var MusicTime = document.getElementById("MusicTime");
+var InfoText = document.getElementById("InfoText");
 function SetMusicTime() {
     //MusicTime.innerHTML="ASDASD";
 
