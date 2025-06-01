@@ -56,7 +56,7 @@ ProgressBar.onpointerup = (event) => {
     console.log("ProgressBar onpointerup");
     ProgressBarOnDrag = false; //設置為不再拖動進度條
 
-    MusicPlayer.currentTime = ProgressBar.value; //設置音樂的當前播放時間為進度條的值
+    MusicPlayer.currentTime = ProgressBar.value / ProgressBarScale; //設置音樂的當前播放時間為進度條的值
 };
 
 var ProgressBarOnDrag = false; //是否正在拖動進度條
@@ -119,6 +119,9 @@ function VolumeChange(Volume) {
 VolumeChange(100);
 //---------------------------------------------------音量
 
+//音樂的秒數轉換成進度條的最大值（細分度），讓進度條更精細。
+var ProgressBarScale = 10000;
+
 var MusicTime = document.getElementById("MusicTime");
 var InfoText = document.getElementById("InfoText");
 function SetMusicTime() {
@@ -131,7 +134,7 @@ function SetMusicTime() {
 
     if (!ProgressBarOnDrag) {
         //console.log("SetProgressBar " + MusicPlayer.currentTime);
-        ProgressBar.value = MusicPlayer.currentTime; //更新進度條的值
+        ProgressBar.value = MusicPlayer.currentTime * ProgressBarScale; //更新進度條的值
 
         //進度條填色
         var W = MusicPlayer.currentTime / MusicPlayer.duration * 100;
@@ -262,17 +265,15 @@ function UpdateInfo(Msg) {
 
 //進度條初始化
 function ProgressInit() {
+    ProgressBar.max = MusicPlayer.duration * ProgressBarScale; //設置進度條的最大值為音樂的總時長
     setInterval(SetMusicTime, 10);
-    ProgressBar.max = MusicPlayer.duration; //設置進度條的最大值為音樂的總時長
 }
 //停止進度條
-function ProgressStop(){
-    try
-    {
+function ProgressStop() {
+    try {
         clearInterval(SetMusicTime);
     }
-    catch
-    {
+    catch {
 
     }
 }
