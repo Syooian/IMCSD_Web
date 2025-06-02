@@ -179,20 +179,42 @@ function ChangeMusic(n) {
                 return Index;
             }
         case LoopModeEnum.None://不循環
-        case LoopModeEnum.All://全部循環
             {
-                //判斷第一首或最後一首
                 if ((n == -1 && Index > 0) || n == 1 && Index < MusicList.length - 1) {
                     var NewIndex = Index + n;
 
-                    PlayIndex(NewIndex); //播放音樂
+                    PlayIndex(Index + n);
 
                     return NewIndex;
                 }
                 else {
-                    console.log("MusicList位於第一首或最後一首");
+                    console.log("MusicList位於第一首或最後一首，且循環模式為'不循環'");
 
                     return -1;
+                }
+            }
+        case LoopModeEnum.All://全部循環
+            {
+                if (n == -1 && Index == 0) {
+                    //位在第一首且要播放上一首，跳至最後一首
+                    var NewIndex = MusicList.length - 1;
+
+                    PlayIndex(NewIndex);
+                    return NewIndex;
+                }
+                else if (n == 1 && Index == MusicList.length - 1) {
+                    //位在最後一首且要播放下一首，跳至第一首
+                    var NewIndex = 0;
+
+                    PlayIndex(NewIndex);
+                    return NewIndex;
+                }
+                else {
+                    //正常播放下一首或上一首
+                    var NewIndex = Index + n;
+
+                    PlayIndex(NewIndex);
+                    return NewIndex;
                 }
             }
         case LoopModeEnum.Random://隨機播放
@@ -219,7 +241,7 @@ function ChangeMusic(n) {
         MusicPlayer.title = MusicList.children[Index].innerHTML;
         MusicList.children[Index].selected = true;
 
-        console.log("ChangeMusic : " + MusicPlayer.title);
+        console.log("ChangeMusic Index : " + Index + ", : " + MusicPlayer.title);
 
         if (IsPlaying()) {
 
@@ -234,7 +256,6 @@ function ChangeMusic(n) {
         }
     }
 }
-
 
 function PlayMusic() {
     MusicPlayer.play();
