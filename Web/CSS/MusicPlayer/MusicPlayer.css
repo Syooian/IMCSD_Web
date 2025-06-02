@@ -10,9 +10,9 @@
 
     /*進度條*/
     --progress-appearance: none;
-    --progress-width: 5px;
-    --progress-height: 5px;
-    --progress-background-color: rgb(197, 7, 0);
+    --progress-width: 10px;
+    --progress-height: 10px;
+    --progress-background-color: rgb(36, 1, 0);
     --progress-border-radius: 50%;
     --progress-transition: 0.5s;
     --progress-hover-width: 15px;
