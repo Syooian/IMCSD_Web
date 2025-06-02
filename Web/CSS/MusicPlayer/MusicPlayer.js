@@ -64,7 +64,10 @@ var ProgressBarOnDrag = false; //是否正在拖動進度條
 MusicPlayer.onended = () => {
     console.log("音樂播放結束");
 
-    ChangeMusic(1);
+    var NewIndex = ChangeMusic(1);
+
+    if (NewIndex == -1)
+        StopMusic();
 };
 
 let PlayPauseButton = document.getElementById("Btns").children[0];
@@ -163,7 +166,7 @@ function ChangeMusic(n) {
     {
         //console.log(MusicList.selectedIndex);
         PlayIndex(MusicList.selectedIndex); //播放音樂
-        return;
+        return MusicList.selectedIndex;
     }
 
     //當前播放曲目
@@ -173,19 +176,24 @@ function ChangeMusic(n) {
         case LoopModeEnum.Single://單曲重複
             {
                 PlayIndex(Index); //播放音樂
-                break;
+                return Index;
             }
         case LoopModeEnum.None://不循環
         case LoopModeEnum.All://全部循環
             {
                 //判斷第一首或最後一首
                 if ((n == -1 && Index > 0) || n == 1 && Index < MusicList.length - 1) {
-                    PlayIndex(Index + n); //播放音樂
+                    var NewIndex = Index + n;
+
+                    PlayIndex(NewIndex); //播放音樂
+
+                    return NewIndex;
                 }
                 else {
                     console.log("MusicList位於第一首或最後一首");
+
+                    return -1;
                 }
-                break;
             }
         case LoopModeEnum.Random://隨機播放
             {
@@ -202,7 +210,7 @@ function ChangeMusic(n) {
                 }
 
                 PlayIndex(RandomIndex); //播放隨機音樂
-                break;
+                return RandomIndex;
             }
     }
 
