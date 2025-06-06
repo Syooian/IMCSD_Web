@@ -141,6 +141,17 @@
 
     <!--https://getbootstrap.com/docs/5.3/components/carousel/-->
     <div id="carouselExample" class="carousel slide"><!--slide：更換方式-->
+        <!--指標-->
+        <!--data-bs-targetvm需要指向母物件的ID()的ID(id="carouselExample")-->
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="0" class="active"
+                aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="1"
+                aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="2"
+                aria-label="Slide 3"></button>
+        </div>
+
         <div class="carousel-inner">
             <div class="carousel-item active"><!--active：初始選擇的圖片-->
                 <img src="photo/11.jpg" class="d-block w-100" alt="...">
