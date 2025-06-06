@@ -82,21 +82,14 @@
         </div>
     </div>
 
-    <!--導覽列-->
-    <!--https://getbootstrap.com/docs/5.3/components/navbar/-->
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">MyWebSite</a>
-
-            <!--此Button在畫面縮小到一定程度時才會出現(右方)-->
-            <!--斷點由最上層class控制 (navbar navbar-expand-lg)-->
+    <nav class="navbar navbar-expand-xl bg-body-tertiary">
+        <div class="container">
+            <a class="navbar-brand" href="#">MyWebsite</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-
-            <!--導覽列內容-->
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
@@ -105,8 +98,6 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#">Link</a>
                     </li>
-
-                    <!--下拉選單-->
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                             aria-expanded="false">
@@ -121,21 +112,18 @@
                             <li><a class="dropdown-item" href="#">Something else here</a></li>
                         </ul>
                     </li>
-
                     <li class="nav-item">
                         <a class="nav-link disabled" aria-disabled="true">Disabled</a>
                     </li>
                 </ul>
-
-                <!--搜尋-->
-                <!--加入Google搜尋 (action)-->
-                <form class="d-flex" role="search" action="https://www.google.com/search">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="q" />
+                <form class="d-flex" role="search" action="https://www.google.com.tw/search">
+                    <input class="form-control me-2" name="q" type="search" placeholder="Search" aria-label="Search" />
                     <button class="btn btn-outline-success" type="submit">Search</button>
                 </form>
             </div>
         </div>
     </nav>
+
 
     <div class="container ">
         <div class="text-end">
@@ -333,30 +321,34 @@
         crossorigin="anonymous"></script>
 
     <script>
+
+
+
+        // Example starter JavaScript for disabling form submissions if there are invalid fields
+        (() => {
+            'use strict'
+
+            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            const forms = document.querySelectorAll('.needs-validation')
+
+            // Loop over them and prevent submission
+            Array.from(forms).forEach(form => {
+                form.addEventListener('submit', event => {
+                    if (!form.checkValidity()) {
+                        event.preventDefault()
+                        event.stopPropagation()
+                    }
+
+                    form.classList.add('was-validated')
+                }, false)
+            })
+        })()
+
+
+
         const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
         const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
 
-
-
-            // Example starter JavaScript for disabling form submissions if there are invalid fields
-            (() => {
-                'use strict'
-
-                // Fetch all the forms we want to apply custom Bootstrap validation styles to
-                const forms = document.querySelectorAll('.needs-validation')
-
-                // Loop over them and prevent submission
-                Array.from(forms).forEach(form => {
-                    form.addEventListener('submit', event => {
-                        if (!form.checkValidity()) {
-                            event.preventDefault()
-                            event.stopPropagation()
-                        }
-
-                        form.classList.add('was-validated')
-                    }, false)
-                })
-            })()
     </script>
 
 </body>
