@@ -95,23 +95,29 @@ function SetMute() {
     //MusicPlayer.muted = !MusicPlayer.muted; //切換靜音狀態
 
     //event.target.innerHTML = MusicPlayer.muted ? "V" : "U"; //更改按鈕顯示
-    if (MusicPlayer.muted) {
-        MusicPlayer.muted = false;
+    if (VolumeValue == 0) {
+        VolumeChange(Volume); //恢復音量
         event.target.innerHTML = "U"; //移除靜音樣式
         event.target.className = "";
     } else {
-        MusicPlayer.muted = true;
+        Volume = MusicPlayer.volume; //記錄當前音量
+        VolumeChange(0); //設置音量為0
         event.target.innerHTML = "V"; //添加靜音樣式
         event.target.className = "Muted";
     }
 }
 
 //--------------------------------------------------音量
-var VolumeControl = document.getElementById("VolumeControl");
-function VolumeChange(Volume) {
-    MusicPlayer.volume = Volume / 100;
+//音量原始數值 (0~1)
+var VolumeValue;
 
-    //console.log(Volume);
+var VolumeControl = document.getElementById("VolumeControl");
+//音量變更 (Volume：0~100)
+function VolumeChange(Volume) {
+    VolumeValue = Volume / 100
+    MusicPlayer.volume = VolumeValue;
+
+    console.log(Volume);
     //document.getElementById("VolumeText").value = Volume;
     VolumeControl.children[1].value = Volume; //更新音量值的文字顯示
 
