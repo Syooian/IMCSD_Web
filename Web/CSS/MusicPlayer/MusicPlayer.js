@@ -105,6 +105,9 @@ function SetMute() {
         event.target.innerHTML = "V"; //添加靜音樣式
         event.target.className = "Muted";
     }
+
+    //更新音量拉條的值
+    VolumeControl.children[0].value = MusicPlayer.volume * 100; //更新音量拉條的值
 }
 
 //--------------------------------------------------音量
