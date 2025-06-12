@@ -92,22 +92,30 @@ function NextMusic() {
 
 //靜音
 function SetMute() {
-    //MusicPlayer.muted = !MusicPlayer.muted; //切換靜音狀態
+    SetMuteButton();
 
     //event.target.innerHTML = MusicPlayer.muted ? "V" : "U"; //更改按鈕顯示
     if (MusicPlayer.volume == 0) {
         VolumeChange(VolumeValue * 100); //恢復音量
-        event.target.innerHTML = "U"; //移除靜音樣式
-        event.target.className = "";
     } else {
         VolumeValue = MusicPlayer.volume; //記錄當前音量
         VolumeChange(0); //設置音量為0
-        event.target.innerHTML = "V"; //添加靜音樣式
-        event.target.className = "Muted";
     }
 
     //更新音量拉條的值
     VolumeControl.children[0].value = MusicPlayer.volume * 100; //更新音量拉條的值
+}
+//靜音按鈕
+var Btn_Mute = document.getElementById("Btn_Mute");
+//設置靜音按鈕樣式
+function SetMuteButton() {
+    if (MusicPlayer.volume > 0) {
+        Btn_Mute.innerHTML = "U"; //移除靜音樣式
+        Btn_Mute.className = "";
+    } else {
+        Btn_Mute.innerHTML = "V"; //添加靜音樣式
+        Btn_Mute.className = "Muted";
+    }
 }
 
 //--------------------------------------------------音量
@@ -127,6 +135,8 @@ function VolumeChange(Volume) {
     //動態調整音量拉條的背景色
     VolumeControl.children[0].style.backgroundImage = `linear-gradient(to right, #f06 ${Volume}%, #4a90e2 ${Volume}%)`;
     //background-image: linear-gradient(to right, #f06 , #4a90e2);
+
+    SetMuteButton();
 }
 
 VolumeChange(100);
