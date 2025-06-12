@@ -92,6 +92,17 @@ function NextMusic() {
 
 //靜音
 function SetMute() {
+    //console.log(isNaN(VolumeValue)+", " + MusicPlayer.volume);
+
+    if (isNaN(VolumeValue) && MusicPlayer.volume == 0) {
+        //例外處理
+        //撥放器一開始就把音量拉到0，此時VolumeValue為NaN狀態(從來沒有設置過)，且撥放器音量也是0
+        //造成要解除靜音時沒有可用的數值恢復撥放器的音量
+
+        console.log("靜音按鈕例外處理");
+        return;
+    }
+
     SetMuteButton();
 
     //event.target.innerHTML = MusicPlayer.muted ? "V" : "U"; //更改按鈕顯示
