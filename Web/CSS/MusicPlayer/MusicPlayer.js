@@ -95,12 +95,12 @@ function SetMute() {
     //MusicPlayer.muted = !MusicPlayer.muted; //切換靜音狀態
 
     //event.target.innerHTML = MusicPlayer.muted ? "V" : "U"; //更改按鈕顯示
-    if (VolumeValue == 0) {
-        VolumeChange(Volume); //恢復音量
+    if (MusicPlayer.volume == 0) {
+        VolumeChange(VolumeValue * 100); //恢復音量
         event.target.innerHTML = "U"; //移除靜音樣式
         event.target.className = "";
     } else {
-        Volume = MusicPlayer.volume; //記錄當前音量
+        VolumeValue = MusicPlayer.volume; //記錄當前音量
         VolumeChange(0); //設置音量為0
         event.target.innerHTML = "V"; //添加靜音樣式
         event.target.className = "Muted";
@@ -114,10 +114,10 @@ var VolumeValue;
 var VolumeControl = document.getElementById("VolumeControl");
 //音量變更 (Volume：0~100)
 function VolumeChange(Volume) {
-    VolumeValue = Volume / 100
-    MusicPlayer.volume = VolumeValue;
+    //console.log(Volume);
 
-    console.log(Volume);
+    MusicPlayer.volume = Volume / 100;
+
     //document.getElementById("VolumeText").value = Volume;
     VolumeControl.children[1].value = Volume; //更新音量值的文字顯示
 
@@ -125,6 +125,7 @@ function VolumeChange(Volume) {
     VolumeControl.children[0].style.backgroundImage = `linear-gradient(to right, #f06 ${Volume}%, #4a90e2 ${Volume}%)`;
     //background-image: linear-gradient(to right, #f06 , #4a90e2);
 }
+
 VolumeChange(100);
 //---------------------------------------------------音量
 
