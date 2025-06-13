@@ -12,3 +12,6 @@ HTML + CSS + JavaScript = HTML5 = Front-end
 1. Vue.js
 2. Angular
 3. React
+
+## AJAX
+HTTP非同步處理技術
