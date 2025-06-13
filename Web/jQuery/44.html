@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .ContentStyle{
+            text-shadow: 3px 3px 5px #888888;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <h1 id="Title">My jQuery</h1>
+        <p id="Content">This is a paragraph.</p>
+        <p id="Content2">This is a paragraph.</p>
+    </div>
+
+    <button id="Btn1" onclick="ChangeTextStyle()">Button 1</button>
+    <button id="Btn2">Button 2</button>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+        // let Title=document.getElementById("Title");
+        // Title.innerHTML="Title 2";
+        // Titile.style.color="red";
+        // Title.style.fontSize="3rem";
+
+        //jQuery語法1
+        // $("#Title").text("Title 3");
+        // $("#Title").css("color", "green");
+
+        //jQuery語法2
+        $("#Title").text("Title 3").css("color", "green").css("font-Size", "3rem");
+
+        //jQuery語法3
+        $("#Title").text("Title 3").css({
+            "color": "green",
+            "font-Size": "3rem",
+            "background": "yellow"
+        });
+
+        $("#Content").addClass("ContentStyle");
+
+        //按鈕觸發1
+        function ChangeTextStyle(){
+            console.log("ChangeTextStyle");
+
+            $("#Content2").addClass("ContentStyle");
+        }
+
+        //按鈕觸發2
+        $("#Btn2").click(ChangeTextStyle);
+    </script>
+</body>
+
+</html>

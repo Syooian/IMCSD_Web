@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .textStyle {
+            color: rgb(47, 0, 255);
+            font-size: 2rem;
+            text-shadow: 3px 3px 5px rgba(0, 0, 0);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div>
+        <h1 id="Jack">jQuery</h1>
+        <p id="Mary">jQuery is a JavaScript library designed to simplify HTML DOM tree traversal and manipulation, as
+            well as event handling, CSS animation, and Ajax.</p>
+
+    </div>
+    <button onclick="changeTextStyle()">按下我</button>
+
+    <button id="myBtn">按下我2</button>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+        /* let jack=document.getElementById("Jack");
+        jack.innerText="I love Jack";
+        jack.style.color="red";
+        jack.style.fontSize="3rem"; */
+
+
+        //$('#Jack').text("I love Jack").css('color','red').css('font-size','3rem');
+        $('#Jack').text("I love Jack").css({
+            'color': 'red',
+            'font-size': '3rem',
+            'background-color': 'yellow'
+        });
+
+        function changeTextStyle() {
+            $('#Mary').addClass('textStyle');
+
+        }
+
+
+      /*   let myBtn = document.getElementById("myBtn");
+        myBtn.addEventListener("click", changeTextStyle); */
+
+        $('#myBtn').click(changeTextStyle);
+
+    </script>
+</body>
+
+</html>
