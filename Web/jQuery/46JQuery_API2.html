@@ -38,8 +38,8 @@
 
 
                     data += `
-                     <div class="col-xl-3 col-md-6">
-                        <div class="card">
+                     <div class="col-xl-3 col-md-6 mb-4">
+                        <div class="card h-100">
                             <img src="${item.Photo}" class="card-img-top" alt="...">
                             <div class="card-body">
                                 <h4 class="card-title">${item.Name}</h4>
@@ -49,8 +49,6 @@
                             </div>
                         </div>
                      </div>`
-
-                 
                 }
 
                 $('.container>.row').html(data);
