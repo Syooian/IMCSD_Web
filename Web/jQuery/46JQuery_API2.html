@@ -10,8 +10,9 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
     <style>
         .jumbotron {
-            background-image: url('https://ezgo.ardswc.gov.tw/_api/content/images/agrispots/1135/480x360_20210705.jpg');
-            background-repeat: cover;
+            /* 背景圖片 background-image: url('https://ezgo.ardswc.gov.tw/_api/content/images/agrispots/1135/480x360_20210705.jpg');*/
+            background-size: cover;
+            background-position: center;
         }
 
         .textShadow {
@@ -49,7 +50,8 @@
                 console.log(resp);
 
                 let data = "";
-
+                let index=Math.floor(Math.random() * resp.length);
+                $('.jumbotron').css('background-image', `url(${resp[index].Photo})`);
 
                 for (let item of resp) {
 
