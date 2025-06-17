@@ -15,11 +15,11 @@
         }
 
         .card-title {
-            min-height: 3rem;
             /* 最小高度 */
+            min-height: 3rem;
             display: flex;
-            align-items: center;
             /* 垂直置中內容 */
+            align-items: center;
         }
     </style>
 </head>
@@ -50,7 +50,7 @@
                 for (var a = 0; a < Data.Data.length; a++) {
                     //console.log(`${a} PesticideCoaID : ${Data.Data[a].PesticideCoaID}`);
                     DataStr += `
-                    <div class="col-xl-3 col-md-6 mb-4 DataItem" data-MyKeyword="${Data.Data[a].PesticideID}">
+                    <div class="col-xl-3 col-md-6 mb-4 DataItem" data-MyKeyword="${Data.Data[a].PesticideProductName} ${Data.Data[a].PesticideCoaID} ${Data.Data[a].PesticideEnName} ${Data.Data[a].PesticideID} ${Data.Data[a].PesticideName}">
                         <div class="card h-100">
                             <h3 class="card-title bg-info text-dark">${Data.Data[a].PesticideProductName}</h3>
                             <p class="card-text">CoaID : ${Data.Data[a].PesticideCoaID}</p>
@@ -66,19 +66,22 @@
         });
 
         $('#Search').on('input', function () {
-            var Keyword=""
+            var Keyword = "";
             try {
                 Keyword = $(this).val().toLowerCase();
             }
-            catch {
+            catch (ex) {
+                console.log(`${ex} : ${$(this).val()}`);
             }
 
             $('.DataItem').each(function () {
-                var GetKetword=""
+                var GetKetword = "";
                 try {
-                    GetKetword = $(this).data('MyKeyword').toLowerCase();
+                    GetKetword = $(this).data('mykeyword').toLowerCase();
                 }
-                catch { }
+                catch (ex) {
+                    console.log(`${ex} : ${$(this).data('mykeyword')}`);
+                }
 
                 if (GetKetword.includes(Keyword)) {
                     $(this).show();
