@@ -13,6 +13,12 @@
         .TextShadow {
             text-Shadow: 2px 2px 4px #000000;
         }
+
+        .card-title {
+            min-height: 3rem;/* 最小高度 */
+            display: flex;
+            align-items: center; /* 垂直置中內容 */
+        }
     </style>
 </head>
 
@@ -36,14 +42,14 @@
                 //console.log(Data.Data.length);
 
                 //var tbody = document.getElementById("tbody");
-                var DataStr="";
+                var DataStr = "";
 
                 for (var a = 0; a < Data.Data.length; a++) {
                     console.log(`${a} PesticideCoaID : ${Data.Data[a].PesticideCoaID}`);
                     DataStr += `
                     <div class="col-xl-3 col-md-6 mb-4">
                         <div class="card h-100">
-                            <h3 class="card-title">${Data.Data[a].PesticideProductName}</h3>
+                            <h3 class="card-title bg-info text-dark">${Data.Data[a].PesticideProductName}</h3>
                             <p class="card-text">CoaID : ${Data.Data[a].PesticideCoaID}</p>
                             <p class="card-text">EnName : ${Data.Data[a].PesticideEnName}</p>
                             <p class="card-text">ID : ${Data.Data[a].PesticideID}</p>
