@@ -15,9 +15,11 @@
         }
 
         .card-title {
-            min-height: 3rem;/* 最小高度 */
+            min-height: 3rem;
+            /* 最小高度 */
             display: flex;
-            align-items: center; /* 垂直置中內容 */
+            align-items: center;
+            /* 垂直置中內容 */
         }
     </style>
 </head>
@@ -27,6 +29,7 @@
         <div class="bg-secondary-subtle p-5 mt-3 rounded shadow jumbotron">
             <h1 class="fw-bold text-white TextShadow">農藥資料查詢</h1>
         </div>
+        <input type="text" class="form-control mb-3" id="Search" placeholder="請輸入關鍵字...">
         <div class="row">
 
         </div>
@@ -45,9 +48,9 @@
                 var DataStr = "";
 
                 for (var a = 0; a < Data.Data.length; a++) {
-                    console.log(`${a} PesticideCoaID : ${Data.Data[a].PesticideCoaID}`);
+                    //console.log(`${a} PesticideCoaID : ${Data.Data[a].PesticideCoaID}`);
                     DataStr += `
-                    <div class="col-xl-3 col-md-6 mb-4">
+                    <div class="col-xl-3 col-md-6 mb-4 DataItem" data-MyKeyword="${Data.Data[a].PesticideID}">
                         <div class="card h-100">
                             <h3 class="card-title bg-info text-dark">${Data.Data[a].PesticideProductName}</h3>
                             <p class="card-text">CoaID : ${Data.Data[a].PesticideCoaID}</p>
@@ -60,6 +63,30 @@
 
                 $('.container>.row').html(DataStr);
             }
+        });
+
+        $('#Search').on('input', function () {
+            var Keyword=""
+            try {
+                Keyword = $(this).val().toLowerCase();
+            }
+            catch {
+            }
+
+            $('.DataItem').each(function () {
+                var GetKetword=""
+                try {
+                    GetKetword = $(this).data('MyKeyword').toLowerCase();
+                }
+                catch { }
+
+                if (GetKetword.includes(Keyword)) {
+                    $(this).show();
+                }
+                else {
+                    $(this).hide();
+                }
+            });
         });
     </script>
 
