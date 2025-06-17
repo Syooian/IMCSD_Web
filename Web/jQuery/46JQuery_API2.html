@@ -8,6 +8,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    
     <style>
         .jumbotron {
             /* 背景圖片 background-image: url('https://ezgo.ardswc.gov.tw/_api/content/images/agrispots/1135/480x360_20210705.jpg');*/
@@ -62,8 +63,8 @@
                             <img src="${item.Photo}" class="card-img-top" alt="...">
                             <div class="card-body">
                                 <h4 class="card-title fw-bold">${item.Name}</h4>
-                                <h5 class="card-text">${item.City} ${item.Town}</h5>
-                                <h5 class="card-text text-info bg-dark text-center fw-bold p-1">${item.Tel}</h5>
+                                <h5 class="card-text"><i class="bi bi-house-door-fill"></i> ${item.City} ${item.Town}</h5>
+                                <h5 class="card-text text-warning bg-dark text-center fw-bold p-1"><i class="bi bi-telephone-fill"></i> ${item.Tel}</h5>
                                
                             </div>
                         </div>
