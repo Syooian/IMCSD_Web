@@ -8,17 +8,54 @@
 </head>
 
 <body>
+    <div class="container">
+        <table id="table" class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>CoaID</th>
+                    <th>EnName</th>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>ProductName</th>
+                </tr>
+            </thead>
+            <tbody id="tbody">
+                <!-- Data will be inserted here -->
+                <!--快速生成td：tr->td*數量-->
+            </tbody>
+        </table>
+    </div>
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script>
         $.ajax({
             type: "get",
             url: "https://data.moa.gov.tw/api/v1/PesticideType/",
             success: function (Data) {
-                console.log(Data);
-            }
+                //console.log(Data.Data);
+                //console.log(Data.Data.length);
 
+                //var tbody = document.getElementById("tbody");
+                var DataStr;
+
+                for (var a = 0; a < Data.Data.length; a++) {
+                    //console.log(`${a} PesticideCoaID : ${Data.Data[a].PesticideCoaID}`);
+                    DataStr += "<tr>";
+                    DataStr += "<td>" + Data.Data[a].PesticideCoaID + "</td>";
+                    DataStr += "<td>" + Data.Data[a].PesticideEnName + "</td>";
+                    DataStr += "<td>" + Data.Data[a].PesticideID + "</td>";
+                    DataStr += "<td>" + Data.Data[a].PesticideName + "</td>";
+                    DataStr += "<td>" + Data.Data[a].PesticideProductName + "</td>";
+                    DataStr += "</tr>";
+                }
+
+                $('#tbody').html(DataStr);
+                //tbody.innerHTML = DataStr;
+            }
         });
     </script>
+
+
 </body>
 
 </html>
