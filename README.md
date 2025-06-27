@@ -29,6 +29,8 @@ Web/CSS/Music
 * [20CSS_BoxModel.html](/Teacher/20CSS_BoxModel.html)
 * [21CSS_Layout.html](/Teacher/21CSS_Layout.html)
 * [22CSS_Position.html](/Teacher/22CSS_Position.html)
+
+### CSS - 音樂撥放器
 * [23player.html](/Teacher/23player.html)
 
 ### JavaScript ES6
@@ -61,7 +63,7 @@ Web/CSS/Music
 * [42carousel.html](/Teacher/42carousel.html)
 * [43Background.html](/Teacher/43Background.html)
 
-### JQuery
+### JQuery AJAX
 * [44JQuery.html](/Teacher/44JQuery.html)
 * [45JQuery_API.html](/Teacher/45JQuery_API.html)
 * [46JQuery_API2.html](/Teacher/46JQuery_API2.html) (Spinner, Modal)
