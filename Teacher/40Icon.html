@@ -90,7 +90,8 @@
 
             <i class="bi bi-facebook fs-3" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="官方臉書"></i>
             <i class="bi bi-twitter fs-3" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="官方推特"></i>
-            <i class="bi bi-whatsapp fs-3" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="官方whatsapp"></i>
+            <i class="bi bi-whatsapp fs-3" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                data-bs-title="官方whatsapp"></i>
             <i class="bi bi-line fs-3" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="官方Line"></i>
             <button class="btn btn-link" data-bs-toggle="modal" data-bs-target="#LoginModal">會員登入</button> |
             <button class="btn btn-link">聯絡我們</button> |
@@ -280,30 +281,34 @@
         crossorigin="anonymous"></script>
 
     <script>
+
+
+
+        // Example starter JavaScript for disabling form submissions if there are invalid fields
+        (() => {
+            'use strict'
+
+            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            const forms = document.querySelectorAll('.needs-validation')
+
+            // Loop over them and prevent submission
+            Array.from(forms).forEach(form => {
+                form.addEventListener('submit', event => {
+                    if (!form.checkValidity()) {
+                        event.preventDefault()
+                        event.stopPropagation()
+                    }
+
+                    form.classList.add('was-validated')
+                }, false)
+            })
+        })()
+
+
+
         const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
         const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
 
-
-
-            // Example starter JavaScript for disabling form submissions if there are invalid fields
-            (() => {
-                'use strict'
-
-                // Fetch all the forms we want to apply custom Bootstrap validation styles to
-                const forms = document.querySelectorAll('.needs-validation')
-
-                // Loop over them and prevent submission
-                Array.from(forms).forEach(form => {
-                    form.addEventListener('submit', event => {
-                        if (!form.checkValidity()) {
-                            event.preventDefault()
-                            event.stopPropagation()
-                        }
-
-                        form.classList.add('was-validated')
-                    }, false)
-                })
-            })()
     </script>
 
 </body>

@@ -13,6 +13,7 @@
     <script>
         let a = Date();  //classless 沒有類別的物件形式
 
+        //classless 沒有類別的物件形式
         let Pen = function (color, cover, refill) {
             //筆的屬性(特徵) property
             //有顏色
@@ -27,6 +28,7 @@
             /* this.getWords = function()  {
                 return "哈囉世界!!";
             } */
+
 
             this.getWords = function (myWords) {
                 return myWords;
@@ -72,7 +74,7 @@
             #a;
 
 
-
+            //建構子
             constructor(color, cover, refill, type, a) {
                 //fields(欄位)
 
@@ -98,37 +100,39 @@
 
             get A() {
 
-                if (this.#a < 0 || this.#a > 9 ){
+                if (this.#a < 0 || this.#a > 9) {
                     return "錯誤的數字";
                 }
                 return this.#a;
             }
 
-            set Refill(val){
+            set Refill(val) {
                 this.#refill = val;
             }
 
-            get Refill(){
+            get Refill() {
                 return this.#refill;
             }
 
             //透過方法
-            getColor(){
+            getColor() {
                 return this.#color;
             }
 
-            setColor(myColor){
+            setColor(myColor) {
                 this.#color = myColor;
             }
 
+
         }
 
-        let myPen2 = new Pen2("紅色", "普通的", "大", "原子筆",8);
+        let myPen2 = new Pen2("紅色", "普通的", "大", "原子筆", 8);
         myPen2.Type = "圓珠筆"; //改變私有欄位的值
         myPen2.setColor("綠色"); //改變私有欄位的值
         myPen2.Refill = "小"; //改變私有欄位的值
-        result2.innerHTML =myPen2.A+"<br>"+ myPen2.Type + "<br>" + myPen2.getColor() + "<br>" + myPen2.cover + "<br>" +
+        result2.innerHTML = myPen2.A + "<br>" + myPen2.Type + "<br>" + myPen2.getColor() + "<br>" + myPen2.cover + "<br>" +
             myPen2.Refill;
+
     </script>
 
 </body>
