@@ -42,6 +42,12 @@ Web/CSS/Music
 
 ### Bootstrap - Jumbotron
 * [37Jumbotron.html](/Teacher/37Jumbotron.html)
+* [38Card.html](/Teacher/38Card.html)
+* [39Modal.html](/Teacher/39Modal.html)
+* [40Icon.html](/Teacher/40Icon.html)
+* [41Navbar.html](/Teacher/41Navbar.html)
+* [42carousel.html](/Teacher/42carousel.html)
+* [43Background.html](/Teacher/43Background.html)
 
 ### JQuery
 * [44JQuery.html](/Teacher/44JQuery.html)
