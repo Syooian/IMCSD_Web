@@ -58,15 +58,16 @@
         <div class="modal-dialog  modal-xl">
             <div class="modal-content">
                 <div class="modal-header">
-                    
+
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    
+                    <div class="d-flex justify-content-center">
+                        <div class="spinner-border"></div> Loading...
+                    </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
+                    <button type="button" class="btn btn-light" data-bs-dismiss="modal"><i class="bi bi-door-open"></i> Close</button>
                 </div>
             </div>
         </div>
@@ -83,25 +84,30 @@
                 url: `https://data.moa.gov.tw/Service/OpenData/ODwsv/ODwsvAttractions.aspx?$top=1&$skip=${skip}`,
                 success: function (resp) {
                     console.log(resp);
-              
 
-                    let data=
-                    `<div class="card mb-3">
-                        <div class="row g-0">
-                            <div class="col-md-4">
-                                <img src="${resp[0].Photo}" class="img-fluid rounded-start" alt="這是${resp[0].Name}的照片">
-                            </div>
-                            <div class="col-md-8">
-                                <div class="card-body">
-                                    <h2 class="card-title">${resp[0].Name}</h2>
-                                    <h3 class="card-title">${resp[0].Tel}</h3>
-                                    <h4 class="card-title">${resp[0].City}${resp[0].Town}${resp[0].Address}</h4>
-                                    <p class="card-text">${resp[0].Introduction}</p>
-                                   
+
+                    let data =
+                        `<div class="card mb-3">
+                            <div class="row g-0">
+                                <div class="col-md-4">
+                                    <img src="${resp[0].Photo}" class="img-fluid rounded-start" alt="這是${resp[0].Name}的照片">
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="card-body">
+                                        <h1 class="card-title fw-bold">${resp[0].Name}</h1>
+                                        <h4 class="card-title fw-bold"><i class="bi bi-telephone-fill"></i> ${resp[0].Tel}</h4>
+                                        <h4 class="card-title fw-bold"><i class="bi bi-house-door-fill"></i> ${resp[0].City}${resp[0].Town}${resp[0].Address} <a href="https://www.google.com/maps?q=${resp[0].City}${resp[0].Town}${resp[0].Address}+(${resp[0].Latitude},${resp[0].Longitude})" target="_blank" class="text-danger"><i class="bi bi-pin-map-fill"></i></a></h4>
+
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>`;
+                            <hr>
+                            <div class="row g-0">
+                                <div class="col-md-12">
+                                    <p class="card-text fw-bold">${resp[0].Introduction.replace(/。/g,"。<br><br>").replace(/：/g,"。<br><br>")}</p>
+                                </div>  
+                            </div>
+                        </div>`;
 
                     $('#DetailModal .modal-body').html(data);
 
