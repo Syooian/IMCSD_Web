@@ -14,6 +14,7 @@
             /* 背景圖片 background-image: url('https://ezgo.ardswc.gov.tw/_api/content/images/agrispots/1135/480x360_20210705.jpg');*/
             background-size: cover;
             background-position: center;
+            height: 400px;
         }
 
         .textShadow {
@@ -23,17 +24,31 @@
 </head>
 
 <body>
+    <div class="text-center p-1 bg-info-subtle">
+
+        <i class="bi bi-facebook fs-3" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="官方臉書"></i>
+        <i class="bi bi-twitter fs-3" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="官方推特"></i>
+        <i class="bi bi-whatsapp fs-3" data-bs-toggle="tooltip" data-bs-placement="bottom"
+            data-bs-title="官方whatsapp"></i>
+        <i class="bi bi-line fs-3" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="官方Line"></i>
+
+    </div>
     <div class="container">
+
         <div class="bg-secondary-subtle py-5 mt-3 rounded shadow jumbotron">
             <h1 class="fw-bold text-center text-dark textShadow bg-white bg-opacity-75 p-3">休閒農業園區一覽</h1>
-            <p class="text-dark text-center fs-4 p-1  bg-warning bg-opacity-75"><strong>要表現在自是有錢人的方法就是國旅</strong></p>
+            <p class="text-dark text-center fs-4 p-1  bg-warning bg-opacity-75"><strong>要表示自己是有錢人的方法就是國旅</strong></p>
             <hr>
-            <button class="btn btn-light btn-lg ms-5">了解更多</button>
+            <div class="d-grid gap-2">
+                <button class="btn btn-light btn-lg">快來找找有哪些好玩的地方</button>
+            </div>
         </div>
         <hr>
         <input type="text" class="form-control mb-3" id="search" placeholder="請輸入關鍵字搜尋...">
         <div class="row">
-
+            <div class="d-flex justify-content-center">
+                <div class="spinner-border"></div> Loading...
+            </div>
         </div>
 
     </div>
@@ -76,22 +91,22 @@
 
         });
 
-        $('#search').on('input',function(){
+        $('#search').on('input', function () {
             let keyword = $(this).val().toLowerCase();
 
-            $('.dataItem').each(function() {
-                
+            $('.dataItem').each(function () {
+
                 let getKeyword = $(this).data('myself-keyword').toLowerCase();
-                
+
                 if (getKeyword.includes(keyword)) {
-                    $(this).fadeIn(500);
+                    $(this).show(500);
                 } else {
-                    $(this).fadeOut(500);
+                    $(this).hide(500);
                 }
             });
-           
+
         });
-        
+
     </script>
 </body>
 
