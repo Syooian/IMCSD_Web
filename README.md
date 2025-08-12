@@ -67,3 +67,5 @@ Web/CSS/Music
 * [44JQuery.html](/Teacher/44JQuery.html)
 * [45JQuery_API.html](/Teacher/45JQuery_API.html)
 * [46JQuery_API2.html](/Teacher/46JQuery_API2.html) (Spinner, Modal)
+* [47JQuery_API_3.html](/Teacher/47JQuery_API_3.html)
+* [48JQuery_API_4.html](/Teacher/48JQuery_API_4.html)
